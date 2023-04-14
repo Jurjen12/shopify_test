@@ -1,0 +1,19 @@
+{% if template contains 'collection' and collection.all_tags.size > 0 %}
+  {% assign categories = '' %}
+  {% for tag in collection.all_tags %}
+    {% if tag contains '_' %}
+      {% capture categories %}{% unless categories == blank  %}{{ categories }}|{% endunless %}{{ tag | split: '_' | first }}{% endcapture %}
+    {% endif %}
+  {% endfor %}
+  {% assign cat_array = categories | split: '|' | uniq %}
+{% endif %}
+
+{% if template contains 'product' and product.tags.size > 0 %}
+	{% assign categories = '' %}
+	{% for tag in product.tags %}
+		{% if tag contains '_' %}
+			{% capture categories %}{% unless categories == blank  %}{{ categories }}|{% endunless %}{{ tag | split: '_' | first }}{% endcapture %}
+		{% endif %}
+	{% endfor %}
+	{% assign cat_array = categories | split: '|' | uniq %}
+{% endif %}

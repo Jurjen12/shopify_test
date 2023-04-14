@@ -1,0 +1,45 @@
+{% for language in form.available_locales %}
+{% if template == 'collection' or template == 'list-collection' %}
+  {% if page.breadcrumbs[0].url == 'collection' %}
+    {% assign curUrl = ((language.url ~'collection') | url) %}
+  {% elsif page.breadcrumbs[0].url == 'catalog' %}
+    {% assign curUrl = ((language.url ~'catalog') | url) %}
+  {% elsif page.breadcrumbs[0].url == 'brands' %}
+    {% assign curUrl = ((language.url ~'go/brand/'~ collection.brand_id) | url) %}
+  {% elsif page.search %}
+    {% assign curUrl = ((language.url ~'search/'~ page.search) | url) %}
+  {% else %}
+    {% if template == 'pages/collection.rain' %}
+      {% assign curUrl = ((language.url ~'go/category/'~ collection.category_id) | url) %}
+    {% elsif template == 'pages/catalog.rain' %}
+      {% assign curUrl = ((language.url ~'go/category/'~ catalog.category_id) | url) %}
+    {% endif %}
+  {% endif %}
+{% elsif template == 'pages/product.rain' %}
+  {% assign curUrl = ((language.url ~'go/product/'~ product.id) | url) %}
+{% elsif template == 'pages/textpage.rain' %}
+  {% if textpage.category_id %}
+    {% assign curUrl = ((language.url ~'go/category/'~ textpage.category_id) | url) %}
+  {% else %}
+    {% assign lastPart = request.url | split('/') %}
+    {% assign lastPartLength = (lastPart | length-2) %}
+    {% assign serviceUrl = '' %}
+    {% assign serviceUrl = lastPart[lastPartLength] %}
+    {% assign curUrl = ((language.url ~'service/'~ serviceUrl) | url) %}
+  {% endif %}
+{% elsif template == 'blog' %}
+  {% assign curUrl = ((language.url ~ blog.url) | url) %}
+{% else %}
+  {% if template != 'index' %}
+    {% if template != 'account' %}
+      {% assign lastPart = template %}
+    {% else %}
+      {% assign lastPart = 'account' %}
+    {% endif %}
+  {% else %}
+    {% assign lastPart = '' %}
+  {% endif %}
+  {% assign curUrl = ((language.url ~ lastPart) | url) %}
+{% endif %}
+{% assign customLanguages = customLanguages | merge({ (language.code) : {'url': curUrl, 'title': language.title, 'code': language.code, 'active': language.active} }) %}
+{% endfor %}

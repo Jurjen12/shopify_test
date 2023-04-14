@@ -1,0 +1,41 @@
+<div id="mobileNav" class="mobile-navigation d-md-none d-block">
+  {% if template == 'collection' %}
+  <a href="" title="" onclick="mobileNav($(this));return false;" data-target="#overlayFilters" class="icon icon-lg icon-shape icon-shape-light bg-light rounded-circle btn-round btn-mobile cart" data-target="#resCart">
+  	<i class="fa fa-plus" aria-hidden="true" data-feather="sliders"></i>
+  </a>
+  {% endif %}
+  {% if template == 'product' %}
+  <a href="" title="" onclick="$('#AddToCartForm').submit();return false;" class="icon icon-lg icon-shape icon-shape-cart rounded-circle btn-cart btn-round btn-mobile cart" data-target="#resCart">
+  	<i class="fa fa-plus" aria-hidden="true" data-feather="plus"></i>
+  </a>
+  {% endif %}
+  <ul class="mobileNavIcons list-unstyled d-flex justify-content-center p-0 m-0">
+    <li>
+      <a href="#formSearch" title="" onclick="$('#formSearch input').focus();return false;" class="btn-mobile search scroll">
+        <i class="fa fa-search" aria-hidden="true" data-feather="search"></i>
+        <span class="title">{{ 'layout.navigation.search' | t }}</span>
+      </a>
+    </li>
+    <li>
+      <a href="{{  routes.account_login_url }}" title=""  data-target="#resLogin" class="btn-mobile account">
+        <i class="fa fa-user" aria-hidden="true" data-feather="user"></i>
+        <span class="title">{{ 'layout.navigation.account' | t | capitalize }}</span>
+      </a>
+    </li>
+    <li>
+      <a href="" title="" onclick="mobileNav($(this));return false;" data-target="#overlayNavigation" class="btn-mobile menu">
+        <i class="fa fa-bars" aria-hidden="true" data-feather="menu"></i>
+        <span class="title">{{ 'layout.navigation.menu' | t }}</span>
+      </a>
+    </li>
+    <li>
+      <a href="{{ routes.cart_url }}" title="" class="btn-mobile cart" data-target="#resCart">
+        <div class="cart-icon">
+        	<span class="cart-count">{{ trueQuantity }}</span>
+       	 	<i class="fa fa-shopping-cart" aria-hidden="true" data-feather="shopping-cart"></i>
+        </div>
+        <span class="title">{{ 'layout.navigation.cart' | t }}</span>
+      </a>
+    </li>
+  </ul>
+</div>

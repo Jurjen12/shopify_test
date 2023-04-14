@@ -1,0 +1,68 @@
+{% if form != blank %}
+  {%- if form.posted_successfully? -%}
+    <p class="form-message form-message--success" tabindex="-1" data-form-status>
+      {{ success_message | default: 'contact.form.post_success' | t }}
+    </p>
+  {%- endif -%}
+
+  {% comment %} We need to add this so the errors are output in the right order {% endcomment %}
+  {% assign error_order = "author, email, body, password, form" | split: ", " %}
+
+  {%- if form.errors -%}
+
+    {%- if form.errors.translated_fields and form.errors.first == 'form' -%}
+      <p class="form-message" tabindex="-1" data-form-status>
+        {{ form.errors.messages['form'] }}
+      </p>
+
+    {% else %}
+      <div class="form-message form-message--error">
+        <h2 class="h3 form-message__title" tabindex="-1" data-form-status>{{ 'contact.form.error_heading' | t }}</h2>
+
+        <ul>
+          {% for error in error_order %}
+            {% for field in form.errors %}
+              {% if error == field %}
+
+                {% capture field_label %}
+                  {% case field %}
+                    {% when 'author' %}
+                      {{ 'contact.form.name' | t }}
+                    {% when 'body' %}
+                      {{ 'contact.form.message' | t }}
+                    {% else %}
+                      {{ form.errors.translated_fields[field] }}
+                  {% endcase %}
+                {% endcapture %}
+                <li>
+                  {%- if field == 'form' -%}
+                    {{ form.errors.messages[field] }}
+                  {%- else -%}
+                    {% comment %} the href should match the input's id {% endcomment %}
+                    <a href="#{{ form_id }}-{{ field }}" class="form-message__link">{{ field_label | strip | capitalize }} {{ form.errors.messages[field] }}</a>
+                  {%- endif -%}
+                </li>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </ul>
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+{% else %}
+  {% if form.errors %}
+  <div class="note form-error">
+    <ul class="list-unstyled alert alert-danger alert-dismissible fade show">
+    {% assign message = 'contact.form.message' | t %}
+    {% for field in form.errors %}
+      {% if field == 'form' %}
+          <li><span class="alert-inner--icon"><i class="ni ni-fat-remove"></i></span><span class="alert-inner--text">{{ form.errors.messages[field] }}</span><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></li>
+      {% else %}
+          {% assign field_name = field | replace: 'body', message %}
+          <li><span class="alert-inner--icon"><i class="ni ni-fat-remove"></i></span><span class="alert-inner--text">{{ 'general.forms.post_field_error_html' | t: field: field_name, error: form.errors.messages[field] }}</span><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+{% endif %}

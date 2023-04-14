@@ -1,0 +1,113 @@
+<div id="products" class="mt-lg-4 mt-2">
+	<div class="container">
+    {% if section.settings.title != blank %}
+      <div class="section-header {{ section.settings.title_text_align }}">
+        <h3 class="{{ section.settings.title_font_weight }} mb-4">{{ section.settings.title | escape }}</h3>
+      </div>
+    {% endif %}
+
+    {%- assign collection = collections[section.settings.collection] -%}
+    {% assign product_collection = section.settings.collection %}
+    {%- assign product_limit = section.settings.grid | times: section.settings.rows -%}
+
+    <div class="row">
+      {% paginate collections[product_collection].products by 8 %}
+        {% for product in collections[product_collection].products %}
+            <div class="productborder col-lg-3 col-6">
+            {% include 'products-grid' %}
+            </div>
+        {% else %}
+          {% for i in (1..4) %}
+            <div class="productborder col-lg-3 col-6">
+              <div class="product">
+                <div class="product-image">
+                  <a href="{{ product.url }}" title="{{ product.title }}" class="title h4">
+                    {% capture current %}{% cycle 1, 2, 3, 4, 5, 6, 7, 8 %}{% endcapture %}
+                    {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                  </a>
+                </div>
+                <div class="product-info {{ settings.product_text_align }} mt-2">
+                    <div class="product-title">{{ 'homepage.onboarding.product_title' | t }}</div>
+                    <div class="product-price text-body">€0,00</div>
+                    <div class="product-stock"><div class="instock text-success"><span>{{ 'Op voorraad' }}</span></div></div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% endfor %}
+      {% endpaginate %}
+    </div>
+
+    {% if section.settings.show_view_all %}
+      <hr class="hr--invisible" aria-hidden="true" />
+      <div class="text-center">
+        <a href="{{ collection.url }}" class="btn" aria-label="{{ 'collections.general.view_all_label' | t: collection_name: collection.title }}">
+          {{ 'collections.general.view_all' | t }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": {"nl": "Producten"},
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": {"nl": "Kop"},
+      "default": {"nl": "Uitgelichte collectie"}
+    },
+	{
+      "type": "select",
+      "id": "title_text_align",
+      "label": {"nl": "Uitlijning titel"},
+      "default": "text-left",
+      "options": [
+        {
+          "label": {"nl": "Links"},
+          "value": "text-left"
+        },
+        {
+          "label": {"nl": "Midden"},
+          "value": "text-center"
+        }
+      ]
+    },
+	{
+      "type": "select",
+      "id": "title_font_weight",
+      "label": {"nl": "Dikte van het lettertype"},
+      "default": "font-weight-normal",
+      "options": [
+        {
+          "label": {"nl": "Dun"},
+          "value": "font-weight-light"
+        },
+		{
+          "label": {"nl": "Normaal"},
+          "value": "font-weight-normal"
+        },
+        {
+          "label": {"nl": "Bold"},
+          "value": "font-weight-bold"
+        }
+      ]
+    },
+    {
+      "id": "collection",
+      "type": "collection",
+      "label": {"nl": "Collectie"}
+    }
+  ],
+  "presets": [
+    {
+      "name": {"nl": "Producten"},
+      "category": {"nl": "Collectie"}
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,681 @@
+{
+  "current": {
+    "color_body_text": "#000000",
+    "color_topnav_text": "#3a3a3a",
+    "color_navbar_text": "#ffffff",
+    "color_newsletter_bg": "#7d9d88",
+    "color_footer_text": "#3a3a3a",
+    "color_topnav_bg": "#ffffff",
+    "color_navbar_bg": "#7d9d88",
+    "color_newsletter_text": "#ffffff",
+    "color_footer_bg": "#f9f6f6",
+    "show_btn_gradient": false,
+    "color_primary": "#4f6c68",
+    "color_primary_gradient": "#198ae7",
+    "color_secondary": "#293439",
+    "color_secondary_gradient": "#ffffff",
+    "color_secondary_text": "#ffffff",
+    "color_cart_button": "#4f6c68",
+    "color_cart_button_gradient": "#009300",
+    "color_cart_button_text": "#ffffff",
+    "color_text_field_text": "#000000",
+    "color_text_field_border": "#ebebeb",
+    "color_text_field": "#ffffff",
+    "type_header_font": "avenir_next_n6",
+    "type_header_base_size": 26,
+    "type_base_font": "avenir_next_n4",
+    "type_base_size": 15,
+    "usp_1_icon": "fa-truck",
+    "usp_1": "<b>VERZONDEN<\/b> < 2 DAGEN",
+    "usp_1_url": "shopify:\/\/pages\/levertijd-verzending",
+    "usp_2_icon": "fa-thumbs-up",
+    "usp_2": "NIET <b>GOED<\/b>, GELD TERUG",
+    "usp_2_url": "shopify:\/\/pages\/niet-goed-geld-terug",
+    "usp_3_icon": "fa-paint-brush",
+    "usp_3": "<b>EIGEN <\/b>PRODUCTIE",
+    "usp_3_url": "shopify:\/\/pages\/over-ons",
+    "usp_4_icon": "fa-shopping-bag",
+    "usp_4": "VERZENDING 3,95 ~ <b>GRATIS<\/b> VANAF 39,-",
+    "usp_4_url": "shopify:\/\/pages\/levertijd-verzending",
+    "product_text_align": "text-center",
+    "show_vendor": false,
+    "product_price_display": "with_currency",
+    "contact_title": "Unieksjiek.nl",
+    "contact_adres": "De Wacht 8A 3295 KB 's-Gravendeel",
+    "contact_phone": "085-2129182",
+    "contact_email": "info@unieksjiek.nl",
+    "share_facebook": true,
+    "share_twitter": false,
+    "share_pinterest": false,
+    "social_twitter_link": "",
+    "social_facebook_link": "https:\/\/www.facebook.com\/unieksjiek",
+    "social_pinterest_link": "",
+    "social_instagram_link": "https:\/\/www.instagram.com\/unieksjiek.nl\/",
+    "social_tumblr_link": "",
+    "social_snapchat_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "favicon": "shopify:\/\/shop_images\/LogoUS_enkel_LR.png",
+    "checkout_logo_image": "shopify:\/\/shop_images\/unieksjiek.nl_150_x_150_px.png",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_color": "#ffffff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#7d9d88",
+    "checkout_button_color": "#7d9d88",
+    "checkout_error_color": "#e32c2b",
+    "color_borders": "#ebebeb",
+    "color_body_bg": "#ffffff",
+    "color_sale_text": "#EA0606",
+    "color_text": "#3a3a3a",
+    "color_primary_button": "#00bcd4",
+    "color_primary_button_text": "#ffffff",
+    "color_secondary_button": "#293439",
+    "color_secondary_button_text": "#ffffff",
+    "color_small_button_text_border": "#3a3a3a",
+    "color_image_overlay_text": "#ffffff",
+    "color_image_overlay": "#685858",
+    "image_overlay_opacity": 40,
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "align_logo": "left",
+          "logo": "shopify:\/\/shop_images\/Logo_website.png",
+          "logo_max_width": 250,
+          "message": true,
+          "home_page_only": false,
+          "bar_alignment": "center",
+          "usp_alignment": "between",
+          "message_text": "Tijdelijk 15% korting op het héle assortiment met code HVH15",
+          "message_link": "shopify:\/\/collections\/all",
+          "aankondigs_color_bg": "#dcc5bd",
+          "aankondigs_color_text": "#000000",
+          "hallmark": "shopify:\/\/shop_images\/WebwinkelKeur_1652997600.svg"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "fe983528-5e03-42db-886a-dacee2df8ef8": {
+            "type": "text",
+            "settings": {
+              "title": "Unieksjiek.nl",
+              "text": "<p>Maakt van je persoonlijke foto's unieke <em>printmemories<\/em>!<br\/><br\/>KVK: 88011852<br\/>BTW: NL004525740B71<br\/>IBAN: NL62KNAB0514313838<\/p>",
+              "social_text_check": true
+            }
+          },
+          "a83cb3c8-156f-462e-bdc0-77f03e7af8e5": {
+            "type": "contact",
+            "settings": {
+              "title": "Contactgegevens",
+              "company_title": "unieksjiek.nl",
+              "company_email": "info@unieksjiek.nl",
+              "company_phone": "085-2129182",
+              "company_address": "De Wacht 8A 's- Gravendeel",
+              "social_contact_check": false
+            }
+          },
+          "2e348fe4-6f10-48a2-a547-9c30af218789": {
+            "type": "link_list",
+            "settings": {
+              "title": "Categorieën",
+              "menu": "categorie-n",
+              "title_2": "Kraamcadeaus",
+              "menu_2": "kraamcadeaus"
+            }
+          },
+          "footer-0": {
+            "type": "link_list",
+            "settings": {
+              "title": "Klantenservice",
+              "menu": "klantenservice",
+              "title_2": "Mijn account",
+              "menu_2": "mijn-account"
+            }
+          }
+        },
+        "block_order": [
+          "fe983528-5e03-42db-886a-dacee2df8ef8",
+          "a83cb3c8-156f-462e-bdc0-77f03e7af8e5",
+          "2e348fe4-6f10-48a2-a547-9c30af218789",
+          "footer-0"
+        ],
+        "settings": {
+          "company_returnemail": "info@unieksjiek.nl",
+          "company_returnadres": "De Wacht 8A, 3295 KB 's-Gravendeel",
+          "show_payment_icons": false,
+          "show_locale_selector": false,
+          "show_currency_selector": false,
+          "section_title": "Meld je aan voor onze nieuwsbrief",
+          "section_btn_text": "aanmelden",
+          "subheading": "<p>Acties, nieuws en nieuwe producten rechtstreeks in je inbox.<\/p>",
+          "show_background": true,
+          "account_link": "\/Account",
+          "account_title": "Snel regelen in je account",
+          "account_description": "<p>Volg je bestelling, betaal facturen of retourneer een artikel.<\/p>",
+          "service_link": "shopify:\/\/pages\/contact",
+          "service_title": "Heb je ons nodig?",
+          "service_description": "<p>We helpen je graag. Neem contact op met de  klantenservice.<\/p>"
+        }
+      },
+      "1616861933ddaffe7f": {
+        "type": "index-slider",
+        "blocks": {
+          "93187a38-db3c-480c-addc-680d9d159b85": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Slider_unieksjiek_2.png",
+              "slide_title": "",
+              "subheading": "",
+              "button_label": "SHOP NU!",
+              "button_link": "shopify:\/\/collections\/all"
+            }
+          },
+          "4bc14805-953c-4edb-b933-4e3ea2c4c5ea": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Banner_webshop_v1_2.png",
+              "slide_title": "",
+              "subheading": "",
+              "button_label": "BEKIJKEN",
+              "button_link": "shopify:\/\/collections\/foto-op-hout"
+            }
+          },
+          "1616861933ddaffe7f-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Slider_unieksjiek_1_111510bb-c5b6-4643-b154-10c8133cfc71.png",
+              "slide_title": "",
+              "subheading": "",
+              "button_label": "SAMENSTELLEN",
+              "button_link": "shopify:\/\/products\/naamslinger"
+            }
+          },
+          "6ebf4fa5-c6c0-419e-bb19-7cdcaba9bba0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/3_3fd08a1a-e333-41a3-ab29-9c72cb596cef.png",
+              "slide_title": "",
+              "subheading": "",
+              "button_label": "BEDRUKTE WIJNKISTEN",
+              "button_link": "shopify:\/\/collections\/wijnkisten"
+            }
+          }
+        },
+        "block_order": [
+          "93187a38-db3c-480c-addc-680d9d159b85",
+          "4bc14805-953c-4edb-b933-4e3ea2c4c5ea",
+          "1616861933ddaffe7f-0",
+          "6ebf4fa5-c6c0-419e-bb19-7cdcaba9bba0"
+        ],
+        "settings": {
+          "homepage_style": "service",
+          "phone": "085-2129182",
+          "whatsapp": "085-2129182",
+          "email": "info@unieksjiek.nl",
+          "monday": "8:00-18:30",
+          "tuesday": "8:00-18:30",
+          "wednesday": "8:00-18:30",
+          "thursday": "8:00-18:30",
+          "friday": "8:00-18:30",
+          "saturday": "8:00-18:30",
+          "sunday": "Gesloten",
+          "review_url": "shopify:\/\/pages\/over-ons",
+          "reviews_star_count": 5,
+          "reviews_score": "9.5",
+          "reviews_count": "3",
+          "button_1_label": "",
+          "button_1_link": "",
+          "button_2_label": "",
+          "button_2_link": ""
+        }
+      },
+      "1616861964c499ad32": {
+        "type": "index-categories",
+        "blocks": {
+          "1616861964c499ad32-0": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "hangen",
+              "button_label": "Ophangen"
+            }
+          },
+          "1616861964c499ad32-2": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "staan",
+              "button_label": "Neerzetten"
+            }
+          },
+          "1616861964c499ad32-1": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "foto-bedrukken-cadeaus",
+              "button_label": "Fotocadeaus"
+            }
+          },
+          "f4c567d7-18da-4bd1-a60a-2f2d72581e7c": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "cadeaukaarten",
+              "button_label": "Cadeaukaarten"
+            }
+          }
+        },
+        "block_order": [
+          "1616861964c499ad32-0",
+          "1616861964c499ad32-2",
+          "1616861964c499ad32-1",
+          "f4c567d7-18da-4bd1-a60a-2f2d72581e7c"
+        ],
+        "settings": {
+          "category_type": "carousel"
+        }
+      },
+      "161686197671dbe9d4": {
+        "type": "index-usp",
+        "blocks": {
+          "01f70aa3-bbbe-4043-9776-cef87dd5d67b": {
+            "type": "image",
+            "settings": {
+              "usp_icon": "fa-hand-pointer-o",
+              "usp": "<b>Stap 1:<\/b> kies je product",
+              "usp_desc": "",
+              "usp_url": ""
+            }
+          },
+          "2b4eb16b-e3b2-4544-8eac-b3ea414c400b": {
+            "type": "image",
+            "settings": {
+              "usp_icon": "fa-upload",
+              "usp": "<b>Stap 2:<\/b> upload je foto",
+              "usp_desc": "",
+              "usp_url": ""
+            }
+          },
+          "0572b603-27a1-410e-922f-237ec5b26560": {
+            "type": "image",
+            "settings": {
+              "usp_icon": "fa-shopping-basket",
+              "usp": "<b>Stap 3:<\/b> bestel",
+              "usp_desc": "",
+              "usp_url": ""
+            }
+          },
+          "e3f82f1e-12e9-4284-a204-603db2655bc1": {
+            "type": "image",
+            "settings": {
+              "usp_icon": "fa-rocket",
+              "usp": "<b>Stap 4:<\/b> snel geleverd!",
+              "usp_desc": "",
+              "usp_url": ""
+            }
+          }
+        },
+        "block_order": [
+          "01f70aa3-bbbe-4043-9776-cef87dd5d67b",
+          "2b4eb16b-e3b2-4544-8eac-b3ea414c400b",
+          "0572b603-27a1-410e-922f-237ec5b26560",
+          "e3f82f1e-12e9-4284-a204-603db2655bc1"
+        ],
+        "settings": {
+          "show_usp_desc": false,
+          "color_usp_bg": "#ffffff",
+          "icon_set": "fontawesome"
+        }
+      },
+      "1616870854acab16f7": {
+        "type": "index-products",
+        "settings": {
+          "title": "AANBEVOLEN",
+          "title_text_align": "text-left",
+          "title_font_weight": "font-weight-bold",
+          "collection": "frontpage"
+        }
+      },
+      "161687118262c5b574": {
+        "type": "index-usp",
+        "blocks": {
+          "794c8b4f-ea61-4ed0-b4b2-3e800b425524": {
+            "type": "image",
+            "settings": {
+              "usp_icon": "check",
+              "usp": "Foto op hout",
+              "usp_desc": "Gave wanddecoraties",
+              "usp_url": "shopify:\/\/collections\/foto-op-hout"
+            }
+          },
+          "e6a1fabe-e6b2-473c-a16f-df222e87c8c6": {
+            "type": "image",
+            "settings": {
+              "usp_icon": "check",
+              "usp": "Foto op forex",
+              "usp_desc": "Modern, lichtgewicht en orgineel!",
+              "usp_url": "shopify:\/\/collections\/foto-op-forex"
+            }
+          },
+          "e791085b-e1f2-41d2-9301-9a1737c493f1": {
+            "type": "image",
+            "settings": {
+              "usp_icon": "check",
+              "usp": "Fotopuzzels",
+              "usp_desc": "12 \/ 15 \/ 30 \/ 60 \/ 120 stukjes",
+              "usp_url": "shopify:\/\/collections\/fotopuzzels"
+            }
+          },
+          "af05c297-5f6d-4f8a-b6e9-4740baa00c59": {
+            "type": "image",
+            "settings": {
+              "usp_icon": "check",
+              "usp": "Bedrukte wijnkisten",
+              "usp_desc": "Ideaal relatiegeschenk",
+              "usp_url": "shopify:\/\/collections\/wijnkisten"
+            }
+          }
+        },
+        "block_order": [
+          "794c8b4f-ea61-4ed0-b4b2-3e800b425524",
+          "e6a1fabe-e6b2-473c-a16f-df222e87c8c6",
+          "e791085b-e1f2-41d2-9301-9a1737c493f1",
+          "af05c297-5f6d-4f8a-b6e9-4740baa00c59"
+        ],
+        "settings": {
+          "show_usp_desc": true,
+          "color_usp_bg": "#dcc5bd",
+          "icon_set": "fontawesome"
+        }
+      },
+      "cart-template": {
+        "type": "cart-template",
+        "settings": {
+          "cart_notes_enable": true,
+          "title": "Voeg nog een cadeaukaart toe aan je bestelling!",
+          "title_text_align": "text-left",
+          "title_font_weight": "font-weight-normal",
+          "upsells": "cadeaukaarten"
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "show_countdown": false,
+          "show_vendor": false,
+          "show_quantity_selector": false,
+          "free_shipping_text": "",
+          "order_before": "0",
+          "enable_payment_button": true,
+          "shipping_timer": "23:00:00",
+          "product_usp_1": "<b>Verzonden<\/b> binnen 2 dagen",
+          "product_usp_2": "Niet <b>goed<\/b>, geld terug",
+          "product_usp_3": "<b>Klantenservice<\/b>  <i>ma-za<\/i> 08:00-18:30u",
+          "shopify_reviews": false,
+          "show_share_buttons": true
+        }
+      },
+      "product-recommendations": {
+        "type": "product-recommendations",
+        "settings": {
+          "heading": "Anderen bekeken ook"
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "grid": 3,
+          "rows": 4,
+          "show_sidebar": false,
+          "show_collection_image": false,
+          "sort_enable": false
+        }
+      },
+      "4693b515-42cd-4c37-91ee-74fd0bbb1e02": {
+        "type": "index-content",
+        "settings": {
+          "title": "Aangepaste content",
+          "title_text_align": "text-left",
+          "title_font_weight": "font-weight-normal"
+        }
+      },
+      "search-template": {
+        "type": "search-template",
+        "settings": {
+        }
+      },
+      "641202c4-bad4-4352-bc78-a00c95d7107d": {
+        "type": "index-products",
+        "settings": {
+          "title": "NIEUW IN HET ASSORTIMENT",
+          "title_text_align": "text-left",
+          "title_font_weight": "font-weight-bold",
+          "collection": "nieuw"
+        }
+      }
+    },
+    "content_for_index": [
+      "1616861933ddaffe7f",
+      "161686197671dbe9d4",
+      "1616861964c499ad32",
+      "1616870854acab16f7",
+      "161687118262c5b574",
+      "4693b515-42cd-4c37-91ee-74fd0bbb1e02",
+      "641202c4-bad4-4352-bc78-a00c95d7107d"
+    ],
+    "blocks": {
+      "8194965531299925038": {
+        "type": "shopify:\/\/apps\/webwinkelkeur\/blocks\/sidebar\/c3ac2bcb-63f1-40d3-9622-f307cd559ad3",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    }
+  },
+  "presets": {
+    "Living": {
+      "color_body_text": "#000000",
+      "color_sale_text": "#EA0606",
+      "color_navbar_text": "#00bcd4",
+      "color_footer_text": "#ffffff",
+      "color_footer_bg": "#00bcd4",
+      "show_btn_gradient": false,
+      "color_cart_button": "#00b900",
+      "color_cart_button_gradient": "#009300",
+      "color_cart_button_text": "#ffffff",
+      "color_text_field_text": "#000000",
+      "color_text_field_border": "#cccccc",
+      "color_text_field": "#ffffff",
+      "color_borders": "#ebebeb",
+      "color_body_bg": "#ffffff",
+      "color_newsletter_bg": "#f2f7fc",
+      "color_newsletter_text": "#00bcd4",
+      "type_header_font": "avenir_next_n6",
+      "type_header_base_size": 26,
+      "type_base_font": "avenir_next_n4",
+      "type_base_size": 15,
+      "usp_1_icon": "check",
+      "usp_1": "Vóór 15u besteld, volgende dag in huis",
+      "usp_2_icon": "check",
+      "usp_2": "Bedenktijd van 14 dagen",
+      "usp_3_icon": "check",
+      "usp_3": "Gratis retourneren",
+      "usp_4_icon": "check",
+      "usp_4": "Gratis verzending vanaf € 40",
+      "product_text_align": "text-center",
+      "product_price_display": "with_currency",
+      "contact_title": "Mijn Bedrijf",
+      "contact_adres": "Teststraat 1",
+      "contact_phone": "0612345678",
+      "contact_email": "info@instijlmedia.nl",
+      "share_pinterest": false,
+      "social_twitter_link": "https:\/\/twitter.com\/shopify",
+      "social_facebook_link": "https:\/\/facebook.com\/shopify",
+      "social_instagram_link": "http:\/\/instagram.com\/shopify",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "medium",
+      "checkout_body_background_color": "#fff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_color": "#fafafa",
+      "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      "checkout_accent_color": "#197bbd",
+      "checkout_button_color": "#197bbd",
+      "checkout_error_color": "#e32c2b",
+      "color_text": "#3a3a3a",
+      "color_primary_button": "#00bcd4",
+      "color_primary_button_text": "#ffffff",
+      "color_secondary_button": "#293439",
+      "color_secondary_button_text": "#ffffff",
+      "color_small_button_text_border": "#3a3a3a",
+      "color_image_overlay_text": "#ffffff",
+      "color_image_overlay": "#685858",
+      "image_overlay_opacity": 40,
+      "content_for_index": [
+
+      ]
+    },
+    "Mode": {
+      "color_body_text": "#000000",
+      "color_sale_text": "#EA0606",
+      "color_navbar_text": "#000000",
+      "color_footer_text": "#ffffff",
+      "color_topnav_bg": "#ffffff",
+      "color_navbar_bg": "#ffffff",
+      "color_footer_bg": "#6c9399",
+      "show_btn_gradient": false,
+      "color_primary": "#6c9399",
+      "color_primary_gradient": "#6c9399",
+      "color_secondary": "#c49e4b",
+      "color_cart_button": "#c49e4b",
+      "color_cart_button_gradient": "#c49e4b",
+      "color_cart_button_text": "#ffffff",
+      "color_text_field_text": "#000000",
+      "color_text_field_border": "#cccccc",
+      "color_text_field": "#ffffff",
+      "color_borders": "#ebebeb",
+      "color_body_bg": "#ffffff",
+      "color_newsletter_bg": "#f2f7fc",
+      "color_newsletter_text": "#6c9399",
+      "type_header_font": "avenir_next_n6",
+      "type_header_base_size": 26,
+      "type_base_font": "avenir_next_n4",
+      "type_base_size": 15,
+      "usp_1_icon": "check",
+      "usp_1": "Vóór 15u besteld, volgende dag in huis",
+      "usp_2_icon": "check",
+      "usp_2": "Bedenktijd van 14 dagen",
+      "usp_3_icon": "check",
+      "usp_3": "Gratis retourneren",
+      "usp_4_icon": "check",
+      "usp_4": "Gratis verzending vanaf € 40",
+      "product_text_align": "text-center",
+      "product_price_display": "with_currency",
+      "contact_title": "Mijn Bedrijf",
+      "contact_adres": "Teststraat 1",
+      "contact_phone": "0612345678",
+      "contact_email": "info@instijlmedia.nl",
+      "share_pinterest": false,
+      "social_twitter_link": "https:\/\/twitter.com\/shopify",
+      "social_facebook_link": "https:\/\/facebook.com\/shopify",
+      "social_instagram_link": "http:\/\/instagram.com\/shopify",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "medium",
+      "checkout_body_background_color": "#fff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_color": "#fafafa",
+      "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      "checkout_accent_color": "#197bbd",
+      "checkout_button_color": "#197bbd",
+      "checkout_error_color": "#e32c2b",
+      "color_text": "#3a3a3a",
+      "color_primary_button": "#00bcd4",
+      "color_primary_button_text": "#ffffff",
+      "color_secondary_button": "#293439",
+      "color_secondary_button_text": "#ffffff",
+      "color_small_button_text_border": "#3a3a3a",
+      "color_image_overlay_text": "#ffffff",
+      "color_image_overlay": "#685858",
+      "image_overlay_opacity": 40,
+      "content_for_index": [
+
+      ]
+    },
+    "Outdoor": {
+      "color_body_text": "#000000",
+      "color_sale_text": "#EA0606",
+      "color_topnav_text": "#000000",
+      "color_navbar_text": "#000000",
+      "color_footer_text": "#ffffff",
+      "color_topnav_bg": "#ffffff",
+      "color_navbar_bg": "#ffffff",
+      "color_footer_bg": "#3a3a3a",
+      "show_btn_gradient": false,
+      "color_primary": "#626262",
+      "color_primary_gradient": "#626262",
+      "color_secondary": "#626262",
+      "color_secondary_text": "#ffffff",
+      "color_cart_button": "#f38730",
+      "color_cart_button_gradient": "#f38730",
+      "color_cart_button_text": "#ffffff",
+      "color_text_field_text": "#000000",
+      "color_text_field_border": "#cccccc",
+      "color_text_field": "#ffffff",
+      "color_borders": "#ebebeb",
+      "color_body_bg": "#ffffff",
+      "color_newsletter_bg": "#ebebeb",
+      "color_newsletter_text": "#f38730",
+      "type_header_font": "avenir_next_n6",
+      "type_header_base_size": 26,
+      "type_base_font": "avenir_next_n4",
+      "type_base_size": 15,
+      "usp_1_icon": "check",
+      "usp_1": "Vóór 15u besteld, volgende dag in huis",
+      "usp_2_icon": "check",
+      "usp_2": "Bedenktijd van 14 dagen",
+      "usp_3_icon": "check",
+      "usp_3": "Gratis retourneren",
+      "usp_4_icon": "check",
+      "usp_4": "Gratis verzending vanaf € 40",
+      "product_text_align": "text-center",
+      "product_price_display": "with_currency",
+      "contact_title": "Mijn Bedrijf",
+      "contact_adres": "Teststraat 1",
+      "contact_phone": "0612345678",
+      "contact_email": "info@instijlmedia.nl",
+      "share_pinterest": false,
+      "social_twitter_link": "https:\/\/twitter.com\/shopify",
+      "social_facebook_link": "https:\/\/facebook.com\/shopify",
+      "social_instagram_link": "http:\/\/instagram.com\/shopify",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "medium",
+      "checkout_body_background_color": "#fff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_color": "#fafafa",
+      "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      "checkout_accent_color": "#197bbd",
+      "checkout_button_color": "#197bbd",
+      "checkout_error_color": "#e32c2b",
+      "color_text": "#3a3a3a",
+      "color_primary_button": "#00bcd4",
+      "color_primary_button_text": "#ffffff",
+      "color_secondary_button": "#293439",
+      "color_secondary_button_text": "#ffffff",
+      "color_small_button_text_border": "#3a3a3a",
+      "color_image_overlay_text": "#ffffff",
+      "color_image_overlay": "#685858",
+      "image_overlay_opacity": 40,
+      "content_for_index": [
+
+      ]
+    }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      "@media (max-width: 1199px) {.res-menu {display: none !important; } .navbar .hallmark {display: none; } #header .nav-icons nav {justify-content: flex-end; align-items: flex-start; margin-right:10px; }}"
+    ]
+  }
+}

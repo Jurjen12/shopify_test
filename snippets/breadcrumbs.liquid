@@ -1,0 +1,97 @@
+{% render 'advanced-tag-loop' %}
+
+{% unless request.page_type == 'index' or request.page_type == 'cart' %}
+<nav class="nav-breadcrumbs" role="navigation" aria-label="breadcrumbs">
+  <ol class="breadcrumb bg-white px-0 py-2 mb-0">
+    <li class="breadcrumb-item small"><a href="{{ routes.root_url }}" title="{{ 'general.breadcrumbs.home_link_title' | t }}">{{ 'general.breadcrumbs.home' | t }}</a></li>
+
+  {% if request.page_type == 'product' %}
+    {% if collection %}
+      <li class="breadcrumb-item small">
+      {% if collection.handle %}
+        {%- if collection.url == blank -%}
+          {% assign url = routes.all_products_collection_url %}
+        {%- else -%}
+          {% assign url = collection.url %}
+        {%- endif -%}
+
+        {{ collection.title | link_to: url }}
+      {% endif %}
+    {% endif %}
+    </li>
+    <li class="breadcrumb-item small">
+    	<span class="breadcrumb--truncate">{{ product.title }}</span>
+    </li>
+  {% elsif request.page_type == 'collection' and collection.handle %}
+    {% if current_tags %}
+      <li class="breadcrumb-item small">
+        {%- if collection.url == blank -%}
+          {% assign url = routes.all_products_collection_url %}
+        {%- else -%}
+          {% assign url = collection.url %}
+        {%- endif -%}
+      {{ collection.title | link_to: url }}
+      </li>
+        <li class="breadcrumb-item small">
+        {% for tag in current_tags %}
+          {% assign is_advanced_tag = false %}
+          {% assign cat = tag | split: '_' | first %}
+          {% unless cat == tag %}
+            {% if cat_array contains cat %}
+              {% assign is_advanced_tag = true %}
+              <span>
+                {{ tag | remove_first: cat | remove_first: '_' }}
+              </span>
+            {% endif %}
+          {% endunless %}
+
+          {% if is_advanced_tag == false %}
+          <span>
+            {{ tag }}
+          </span>
+          {% endif %}
+
+          {% unless forloop.last %}
+          <span>+</span>
+          {% endunless %}
+        {% endfor %}
+      </li>
+    {% else %}
+     <li class="breadcrumb-item small"><span>{{ collection.title }}</span></li>
+    {% endif %}
+
+  {% elsif request.page_type == 'blog' %}
+	
+    {% if current_tags %}
+    <li class="breadcrumb-item small">
+      {{ blog.title | link_to: blog.url }}
+    </li>
+    <li class="breadcrumb-item small">
+      <span>{{ current_tags | join: " + " }}</span>
+    </li>
+    {% else %}
+    <li class="breadcrumb-item small">
+    	<span>{{ blog.title }}</span>
+    </li>
+    {% endif %}
+
+  {% elsif request.page_type == 'article' %}
+
+    <li class="breadcrumb-item small">
+    	{{ blog.title | link_to: blog.url }}
+    </li>
+    <li class="breadcrumb-item small">
+    	<span>{{ article.title }}</span>
+    </li>
+  {% elsif request.page_type == 'page' %}
+    <li class="breadcrumb-item small">
+   <span>{{ page.title }}</span>
+    </li>
+  {% else %}
+	<li class="breadcrumb-item small">
+   		<span>{{ page_title }}</span>
+    </li>
+  {% endif %}
+  </ol>
+</nav>
+{% endunless %}

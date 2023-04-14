@@ -1,0 +1,231 @@
+<div id="blogs">
+  <div class="container">
+    <div class="blog-container">
+       {% if section.settings.title != blank %}
+        <div class="title-box pb-4 {{ section.settings.title_text_align }}">
+          <h3 class="{{ section.settings.title_font_weight }} mb-0">{{ section.settings.title | escape }}</h3>
+        </div>
+      {% endif %}
+       <div class="row">
+         {%- assign blog = blogs[section.settings.blog] -%}
+          {% for article in blog.articles %}
+         	{% if forloop.first == true %}
+            <article class="article-item col-lg-6 col-12 mb-md-0 mb-4">
+              <div class="article-entry">
+                <div class="main-image article-image">
+                  {% capture img_id %}ArticleImage-{{ article.image.id }}{% endcapture %}
+                  {% capture img_wrapper_id %}ArticleImageWrapper-{{ article.image.id }}{% endcapture %}
+                  <a href="{{ article.url }}">
+                    <picture>
+                      <source media="(min-width:481px)" srcset="{{ article.image | image_url }}">
+                      <source media="(min-width:0px)" srcset="{{ article.image | img_url: '480x263', scale: 1, crop: 'center' }}">
+                      <img src="{{ article.image | image_url: '670x392', scale: 1, crop: 'center' }}" width="670" height="392" alt="{{ article.title }}" loading="lazy" class="img-fluid">
+                    </picture>
+                  </a>
+                </div>
+              </div>
+              <header class="blog-header mt-3">
+                <a href="{{ article.url }}" title="{{ blog.title }}"><h4 class="font-weight-normal mb-0">{{ article.title }}</h4></a>
+                <div class="subtitle mb-2">
+                  {% if section.settings.blog_show_author %}
+                    <span class="article_author text-muted">{{ 'blogs.article.by_author' | t: author: article.author }}</span>
+                  {% endif %}
+
+                  {% if section.settings.blog_show_date %}
+                    <span class="article_date text-muted">{{ article.published_at | time_tag: format: 'date' }}</span>
+                  {% endif %}
+                </div>
+                <p class="d-md-block d-none mb-0">{% if article.excerpt.size > 0 %}{{ article.excerpt }}{% else %}{{ article.content | strip_html | truncate: 150 }}{% endif %}</p>
+                {% if article.tags.size > 0 %}
+                <div class="d-md-block d-none article__tags rte">
+                  <ul class="list--inline" aria-label="{{ 'blogs.article.tags' | t }}">
+                    {% for tag in article.tags %}
+                      <li>
+                        <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="article__grid-tag">{{ tag }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+			  {% if section.settings.show_view_all %}
+              <div class="article_meta-buttons">
+                <a href="{{ article.url }}" class="link" aria-label="{{ 'blogs.article.read_more_title' | t: title: article.title }}">
+                  <u>{{ 'blogs.article.read_more' | t }}</u>
+                </a>
+                {% if blog.comments_enabled? and article.comments_count > 0 %}
+                <a href="{{ article.url }}#comments" class="article__comment-count btn btn--tertiary btn--small">
+                  {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}
+                 </a>
+                {% endif %}
+              </div>
+              {% endif %}
+              </header>
+          </article>
+         {% endif %}
+        {% endfor %}
+        <div class="col-lg-6 col-12">
+          {% for article in blog.articles limit: 4 %}
+          	{% if forloop.first != true %}
+            <article class="article-item row mb-4">
+                <div class="col-sm-6">
+                  <div class="article-entry">
+                    <div class="article-image">
+                      <a href="{{ article.url }}">
+                        <picture>
+                          <source media="(min-width:481px)" srcset="{{ article.image | image_url: width: 320, height: 187, crop: 'center' }}">
+                          <source media="(min-width:0px)" srcset="{{ article.image | image_url: width: 480, height: 263, crop: 'center' }}">
+                          <img src="{{ article.image | image_url: width: 320, height: 187, crop: 'center' }}" width="320" height="187" alt="{{ article.title }}" loading="lazy" class="img-fluid">
+                        </picture>
+                      </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-12">
+                <a href="{{ article.url }}" title="{{ blog.title }}"><h4 class="font-weight-normal mt-lg-0 mt-3">{{ article.title }}</h4></a>
+               	<p class="d-md-block d-none mb-0">{% if article.excerpt.size > 0 %}{{ article.excerpt | strip_html | truncate: 120 }}{% else %}{{ article.content | strip_html | truncate: 120 }}{% endif %}</p>
+                {% if article.tags.size > 0 %}
+                <div class="d-md-block d-none article__tags rte">
+                  <ul class="list--inline" aria-label="{{ 'blogs.article.tags' | t }}">
+                    {% for tag in article.tags %}
+                      <li>
+                        <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="article__grid-tag">{{ tag }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+			  {% if section.settings.show_view_all %}
+              <div class="article_meta-buttons">
+                <a href="{{ article.url }}" class="link my-0" aria-label="{{ 'blogs.article.read_more_title' | t: title: article.title }}">
+                  <u>{{ 'blogs.article.read_more' | t }}</u>
+                </a>
+                {% if blog.comments_enabled? and article.comments_count > 0 %}
+                <a href="{{ article.url }}#comments" class="article__comment-count btn btn--tertiary btn--small">
+                  {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}
+                 </a>
+                {% endif %}
+              </div>
+              {% endif %}
+            </div>
+          </article>
+          	{% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": {
+    "nl": "Blogs"
+  },
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": {
+        "nl": "Titel"
+      },
+      "default": {
+        "nl": "Blogberichten"
+      }
+    },
+    {
+      "type": "select",
+      "id": "title_text_align",
+      "label": {
+        "nl": "Uitlijning titel"
+      },
+      "default": "text-left",
+      "options": [
+        {
+          "label": {
+            "nl": "Titel links uitlijnen"
+          },
+          "value": "text-left"
+        },
+        {
+          "label": {
+            "nl": "Titel in het midden"
+          },
+          "value": "text-center"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": {
+        "nl": "Dikte van het lettertype"
+      },
+      "default": "font-weight-normal",
+      "options": [
+        {
+          "label": {
+            "nl": "Dun"
+          },
+          "value": "font-weight-light"
+        },
+        {
+          "label": {
+            "nl": "Normaal"
+          },
+          "value": "font-weight-normal"
+        },
+        {
+          "label": {
+            "nl": "Bold"
+          },
+          "value": "font-weight-bold"
+        }
+      ]
+    },
+    {
+      "id": "blog",
+      "type": "blog",
+      "label": {
+        "nl": "Blog"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_author",
+      "label": {
+        "nl": "Auteur weergeven"
+      },
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_date",
+      "label": {
+        "nl": "Datum weergeven"
+      },
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": {
+        "nl": "Knop 'Alles weergeven' weergeven"
+      },
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "nl": "Blogs"
+      },
+      "category": {
+        "nl": "Blog"
+      },
+      "settings": {
+        "blog": "News"
+      }
+    }
+  ]
+}
+{% endschema %}

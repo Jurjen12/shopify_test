@@ -1,0 +1,116 @@
+{% liquid 
+  case section.settings.cat_rows
+  when 1
+  assign category_width = 'col-lg-12'
+  when 2
+  assign category_width = 'col-lg-6'
+  when 3
+    assign category_width = 'col-lg-4'
+  when 4
+    assign category_width = 'col-lg-3'
+  endcase 
+%}
+<div data-section-id="{{ section.id }}" data-section-type="banners-section">
+  <div id="categories" class="categories mt-lg-4 mt-2" aria-label="banners" aria-describedby="banners-info" tabindex="-1" >
+    <div class="container">
+      <div class="row mb-md-4">
+      {%- for block in section.blocks -%}
+      {%- assign block_image = block.settings.image -%}
+      {% if block_image != blank %}
+       <div class="categoryborder{% if section.blocks.size < 4 %} {{ category_width }} col-6 mb-4{% endif %}" {{ block.shopify_attributes }}>
+         <div class="category">
+           <div class="category-image">
+              <a href="{{ block.settings.button_link }}" title="{{ block_image.alt | escape }}">
+                  {% if block.settings.image != blank %}
+                  <picture>
+                      <source media="(min-width:767px)" srcset="{{ block.settings.image | image_url }}">
+                      <source media="(min-width:0px)" srcset="{{ block.settings.image | image_url }}">
+                      <img src="{{ block.settings.image | image_url }}" width="437" height="241" alt="{% if block.settings.button_label != blank %}{{ block.settings.button_label }}{% else %}{{ collection.title }}{% endif %}" loading="lazy" class="img-fluid">
+                  </picture>
+                  {% else %}
+                  <picture>
+                      <source media="(min-width:767px)" srcset="//placehold.jp/28/f7f7f7/000000/437x241.png">
+                      <source media="(min-width:0px)" srcset="//placehold.jp/28/f7f7f7/000000/200x115.png">
+                      <img src="//placehold.jp/28/f7f7f7/000000/437x241.png" width="437" height="241" alt="{% if block.settings.button_label != blank %}{{ block.settings.button_label }}{% else %}{{ collection.title }}{% endif %}" loading="lazy" class="img-fluid">
+                  </picture>
+                  {% endif %}
+              </a>
+             {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+              <div class="category-details">
+                <a href="{{ block.settings.button_link }}" title="{{ block_image.alt | escape }}" class="text-primary bg-white py-2 px-3 d-md-none d-block">
+                  <span class="btn-inner--text align-middle">{{ block.settings.button_label }}</span><span class="btn-inner--icon"><i data-feather="chevron-right" height="18" width="18" stroke-width="2" class="align-middle"></i></span>
+                </a>
+                <a href="{{ block.settings.button_link }}" title="{{ block_image.alt | escape }}" class="btn btn-icon btn-{% if settings.show_btn_gradient %}gradient-{% endif %}primary d-md-block d-none my-0">
+                  <span class="btn-inner--text align-middle">{{ block.settings.button_label }}</span><span class="btn-inner--icon"><i data-feather="chevron-right" height="18" width="18" stroke-width="2" class="align-middle"></i></span>
+                </a>
+              </div>
+             {% endif %}
+            </div>
+         </div>
+      </div>
+      {% endif %}
+      {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": {"nl": "Banners"},
+  "class": "index-section index-section--banners",
+  "settings": [
+	{
+      "type": "range",
+      "id": "cat_rows",
+      "label": {"nl": "Aantal categorieën"},
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": {"nl": "Banner"},
+	  "limit":4,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": {"nl": "Afbeelding"}
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": {"nl": "Knoplabel"}
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": {"nl": "Knoplink"}
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      	"name": {"nl": "Banners"},
+      	"category": {"nl": "Afbeelding"},
+		"settings": {},
+		"blocks": [
+          {"type": "image"},
+          {"type": "image"},
+          {"type": "image"}
+    	]
+	}
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

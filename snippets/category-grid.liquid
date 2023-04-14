@@ -1,0 +1,45 @@
+{% comment %}
+    Renders a list of products from a collection
+
+    Accepts:
+    - collection: {Object} Collection Liquid object (required)
+
+    Usage:
+    {% include 'collection-grid-item', collection: collection %}
+{% endcomment %}
+{% if collection.image %}
+  {%- assign collection_image = collection.image -%}
+{% elsif collection.products.first and collection.products.first.media != empty %}
+  {%- assign collection_image = collection.products.first.featured_media.preview_image -%}
+{% else %}
+  {% assign collection_image = blank %}
+{% endif %}
+<div class="category">
+   <div class="category-image{% if collection.image %} image-present{% endif %} text-center">
+      <a href="{{ collection.url }}" title="{{ block_image.alt | escape }}">
+        {% if collection.image != blank %}
+        <picture>
+        	<source media="(min-width:767px)" srcset="{{ collection.image | image_url }}">
+            <source media="(min-width:0px)" srcset="{{ collection.image | image_url }}">
+            <img src="{{ collection.image | image_url }}" width="437" height="241" alt="{% if block.settings.button_label != blank %}{{ block.settings.button_label }}{% else %}{{ collection.title }}{% endif %}" loading="lazy" class="img-fluid">
+        </picture>
+        {% else %}
+        <picture>
+          	<source media="(min-width:767px)" srcset="//placehold.jp/28/f7f7f7/000000/437x241.png">
+            <source media="(min-width:0px)" srcset="//placehold.jp/28/f7f7f7/000000/200x115.png">
+        	<img src="//placehold.jp/28/f7f7f7/000000/437x241.png" width="437" height="241" alt="{% if block.settings.button_label != blank %}{{ block.settings.button_label }}{% else %}{{ collection.title }}{% endif %}" loading="lazy" class="img-fluid">
+        </picture>
+        {% endif %}
+      </a>
+     {% if block.settings.button_label != blank %}
+     <div class="category-details">
+       	<a href="{{ collection.url }}" title="{{ block_image.alt | escape }}" class="text-primary bg-white py-2 px-3 d-md-none d-block">
+          <span class="btn-inner--text align-middle">{% if block.settings.button_label != blank %}{{ block.settings.button_label }}{% else %}{{ collection.title }}{% endif %}</span><span class="btn-inner--icon"><i class="fal fa-chevron-right"></i></span>
+        </a>
+        <a href="{{ collection.url }}" title="{{ block_image.alt | escape }}" class="btn btn-icon btn-{% if settings.show_btn_gradient %}gradient-{% endif %}primary d-md-block d-none">
+          <span class="btn-inner--text align-middle">{% if block.settings.button_label != blank %}{{ block.settings.button_label }}{% else %}{{ collection.title }}{% endif %}</span><span class="btn-inner--icon"><i class="fal fa-chevron-right"></i></span>
+        </a>
+     </div>
+     {% endif %}
+   </div>
+</div>

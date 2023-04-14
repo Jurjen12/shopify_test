@@ -1,0 +1,84 @@
+{% case section.settings.cat_rows %}
+{% when 1 %}
+  {%- assign category_width = 'col-lg-12' -%}
+{% when 2 %}
+  {%- assign category_width = 'col-lg-6' -%}
+{% when 3 %}
+  {%- assign category_width = 'col-lg-4' -%}
+{% when 4 %}
+  {%- assign category_width = 'col-lg-3' -%}
+{% endcase %}
+<div data-section-id="{{ section.id }}" data-section-type="banners-section">
+  <div id="categories" class="categories mb-md-4" aria-label="banners" aria-describedby="banners-info" tabindex="-1" >
+    <div class="container">
+      <div class="title-box">
+        <h3 class="d-lg-none d-block mb-3">{{ 'homepage.general.categories_title' | t  }}</h3>
+      </div>
+      <div class="content-box position-relative">
+        {% if section.settings.category_type == 'carousel' and section.blocks.size > 3 %}
+        <div class="custom-nav d-flex align-items-center justify-content-end">
+        	<a href="" onclick="return false;" class="prev icon icon-shape bg-white shadow rounded-circle"><i class="fal fa-chevron-left"></i></a>
+            <a href="" onclick="return false;" class="next icon icon-shape bg-white shadow rounded-circle"><i class="fal fa-chevron-right"></i></a>
+        </div>
+        {% endif %}
+        <div class="{% if section.settings.category_type == 'default' and section.blocks.size < 4 %}row{% else %}owl-categories owl-carousel owl-theme{% endif %}">
+         {% for block in section.blocks limit:6 %}
+          <div class="categoryborder{% if section.settings.category_type == 'default' and section.blocks.size < 4 %} {{ category_width }} col-6 mb-4{% endif %}" {{ block.shopify_attributes }}>
+            {%- assign collection = collections[block.settings.collection] -%}
+            {% include 'category-grid', collection: collection %}
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": {"nl": "Categorieën"},
+  "class": "index-section",
+  "max_blocks": 12,
+  "settings": [
+	{
+       "type": "select",
+       "id": "category_type",
+       "options": [
+          { "value": "default", "label":{"nl": "Standaard"} },
+          { "value": "carousel", "label":{"nl": "Carrousel"} }
+       ],
+       "label": {"nl": "Categorieweergave"}
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_collection",
+      "name": {"nl": "Collectie"},
+      "settings": [
+        {
+          "label": {"nl": "Collectie"},
+          "id": "collection",
+          "type": "collection"
+        },
+		{
+          "type": "text",
+          "id": "button_label",
+          "label": {"nl": "Knoplabel"}
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": {"nl": "Categorieën"},
+      "category": {"nl": "Collectie"},
+      "blocks": [
+        {"type": "featured_collection"},
+        {"type": "featured_collection"},
+        {"type": "featured_collection"}
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,79 @@
+{%- capture categories -%}
+  {%- for tag in collections[collection.handle].tags -%}
+    {%- if tag contains 'categories' -%}
+      	{%- assign tag_patterns = tag | split: '_' -%}
+		<li class="collection-sidebar__filter-item main-filter text-body" data-tag="{{ tag | handle }}"><a href="" title="{{ tag | handle }}"><span>{{ tag_patterns[1] }}</span></a></li>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+
+    {%- capture filters -%}
+    {%- assign filter_title = '' -%}
+    {%- assign div_opened = 0 -%}
+    {%- assign div_closed = 0 -%}
+
+    {%- for tag in collection.all_tags -%}
+      {%- unless tag contains 'categories' or tag contains 'display' -%}
+        {%- assign tag_patterns = tag | split: '_' -%}
+        {%- assign heading = tag_patterns[0] -%}
+        {%- assign value = tag_patterns[1] -%}
+
+        {%- if value != blank -%}
+
+          {%- if heading != filter_title -%}
+            {%- if filter_title != blank -%}
+              </ul>
+              </div>
+
+              {%- assign div_closed = div_closed | plus: 1 -%}
+            {%- endif -%}
+
+            <div class="collection-sidebar__additional-filter widget p-4 mx-2 mb-4" data-filter="{{ tag_patterns[0] }}">
+              <h5 class="collection-sidebar__filter-title mb-3">{{ 'general.filters.' | append: heading | t }}</h5>
+              <ul class="list-unstyled collection-sidebar__filter-items mb-0">
+
+            {%- assign filter_title = heading -%}
+            {%- assign div_opened = div_opened | plus: 1 -%}
+          {%- endif -%}
+          <li class="collection-sidebar__filter-item" data-tag="{{ tag | handle }}">
+            <a href="" title="{{ tag | handle }}">
+              <div class="custom-control custom-checkbox{% if forloop.last == false %} mb-3{% endif %}">
+                  <input class="custom-control-input" id="customCheck_{{ tag | handle }}" type="checkbox">
+                <label class="custom-control-label text-body" for="customCheck_{{ tag | handle }}"><span>{{ 'general.filters.values.' | append: tag_patterns[1] | t }}</span></label>
+               </div>
+             </a>
+          </li>
+        {%- endif -%}
+      {%- endunless -%}
+    {%- endfor -%}
+
+    {%- if div_opened != div_closed -%}
+       </ul>
+       </div>
+    {%- endif -%}
+  {%- endcapture -%}
+
+
+<div id="overlayFilters" class="overlay" onclick="mobileNav($(this));return false;" data-target="#overlayFilters">
+  <div id="resMenu" class="overlay-content">
+	<div class="overlay-header bg-white text-body font-weight-bold border-bottom mb-3">
+      <h5 class="overlay-title">{{ 'layout.navigation.filters' | t }}</h5>
+      <button type="button" class="close" onclick="mobileNav($(this));return false;" data-target="#overlayFilters">
+         <span class="fa fa-times" data-feather="x" aria-hidden="true"></span>
+      </button>
+    </div>
+    <div class="overlay-body collection-sidebar">
+      <div class="collection-sidebar__content accordion-content">
+        {%- if categories != blank -%}
+          <div class="collection-sidebar__categories-filter">
+            <h3 class="collection-sidebar__filter-title">Categories</h3>
+            <ul class="list-unstyled collection-sidebar__filter-items">
+              {{ categories }}
+            </ul>
+          </div>
+        {%- endif -%}
+		{%- if filters != blank -%}{{ filters }}{%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>

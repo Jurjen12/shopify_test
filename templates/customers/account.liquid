@@ -1,0 +1,56 @@
+<div class="my-account">
+  <div class="container py-3">
+    <div class="title-box">
+        <h1>{{ 'customer.account.title' | t }}</h1>
+    </div>
+    <div class="content-box">
+      <div class="row">
+        <div class="col-xl-6 col-12">
+          <div class="block block-orders">
+            <h2 class="h4">{{ 'customer.orders.title' | t }}</h2>
+            {% paginate customer.orders by 20 %}
+            {% if customer.orders.size != 0 %}
+              <table class="full">
+                <thead>
+                  <tr>
+                    <th>{{ 'customer.orders.order_number' | t }}</th>
+                    <th>{{ 'customer.orders.date' | t }}</th>
+                    <th>{{ 'customer.orders.payment_status' | t }}</th>
+                    <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
+                    <th>{{ 'customer.orders.total' | t }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for order in customer.orders %}
+                    <tr>
+                      <td>{{ order.name | link_to: order.customer_url }}</td>
+                      <td>{{ order.created_at | date: format: 'date' }}</td>
+                      <td>{{ order.financial_status_label }}</td>
+                      <td>{{ order.fulfillment_status_label }}</td>
+                      <td>{{ order.total_price | money }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            {% else %}
+              <p>{{ 'customer.orders.none' | t }}</p>
+            {% endif %}
+            {% if paginate.pages > 1 %}
+            <div class="text-center">
+              {% include 'pagination-custom' %}
+            </div>
+            {% endif %}
+            {% endpaginate %}
+          </div>
+        </div>
+        <div class="col-xl-6 col-12">
+          <div class="block block-account">
+            <h2 class="h4">{{ 'customer.account.details' | t }}</h2>
+            {{ customer.default_address | format_address }}
+            <p><a href="{{ routes.account_addresses_url }}" class="btn btn-icon btn-{% if settings.show_btn_gradient %}gradient-{% endif %}primary">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

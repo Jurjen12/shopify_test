@@ -1,0 +1,113 @@
+{%- assign social_icons = false -%}
+{%- if
+  settings.social_twitter_link != blank
+  or settings.social_facebook_link != blank
+  or settings.social_pinterest_link != blank
+  or settings.social_instagram_link != blank
+  or settings.social_tumblr_link != blank
+  or settings.social_snapchat_link != blank
+  or settings.social_youtube_link != blank
+  or settings.social_vimeo_link != blank
+  or request.page_type == 'article'
+  or request.page_type == 'blog'
+-%}
+  {%- assign social_icons = true -%}
+{%- endif -%}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-12 order-2">
+      {% render 'theme-sidebar', widgets:'service,contact,social' %}
+    </div>
+    <div class="col-lg-9 col-12 order-1">
+      {% include 'breadcrumbs' %}
+      <div class="title-box">
+          <h1>{{ page.title }}</h1>
+      </div>
+      <div class="content-box">
+        {{ page.content }}
+        {%- assign formId = 'ContactForm' -%}
+        {% form 'contact', id: formId %}
+          {% render 'theme-messages', form: form, form_id: formId %}
+              <label for="{{ formId }}-name">{{ 'contact.form.name' | t }}</label>
+              <input type="text" id="{{ formId }}-name" class="form-control mb-2" name="contact[{{ 'contact.form.name' | t }}]" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+              <label for="{{ formId }}-email">{{ 'contact.form.email' | t }} <span aria-hidden="true">*</span></label>
+              <input
+                type="email"
+                id="{{ formId }}-email"
+                class="form-control mb-2" 
+                name="contact[email]"
+                autocorrect="off"
+                autocapitalize="off"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                aria-required="true"
+                {%- if form.errors contains 'email' -%}
+                  class="input--error"
+                  aria-invalid="true"
+                  aria-describedby="{{ formId }}-email-error"
+                {%- endif -%}
+                >
+              {%- if form.errors contains 'email' -%}
+                <span id="{{ formId}}-email-error" class="input-error-message">
+                  <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+                  <span>{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.</span>
+                </span>
+              {%- endif -%}
+
+          <label for="{{ formId }}-phone">{{ 'contact.form.phone' | t }}</label>
+          <input type="tel" id="{{ formId }}-phone" class="form-control mb-2" name="contact[{{ 'contact.form.phone' | t }}]" pattern="[0-9\-]*" value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+
+          <label for="{{ formId }}-message">{{ 'contact.form.message' | t }}</label>
+          <textarea rows="10" id="{{ formId }}-message" class="form-control mb-2" name="contact[{{ 'contact.form.message' | t }}]">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+
+          <input type="submit" class="btn btn-{% if settings.show_btn_gradient %}gradient-{% endif %}primary" value="{{ 'contact.form.submit' | t }}">
+
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": {"nl": "Klantenservice pagina"},
+  "settings": [
+    {
+      "type": "range",
+      "id": "grid",
+      "label": {"nl": "Producten per rij"},
+      "default": 4,
+      "min": 2,
+      "max": 4,
+      "step": 1
+    },
+    {
+      "type": "range",
+      "id": "rows",
+      "label": {"nl": "Rijen per pagina"},
+      "default": 4,
+      "min": 1,
+      "max": 24,
+      "step": 1
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_image",
+      "label": {"nl": "Collectieafbeelding weergeven"},
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "sort_enable",
+      "label": {"nl": "Sortering inschakelen"},
+      "default": true
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

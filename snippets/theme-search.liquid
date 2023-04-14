@@ -1,0 +1,17 @@
+<form id="formSearch" action="{{ routes.search_url }}" method="get" class="position-relative py-2 mb-0 w-100">
+	<div class="search-inner-bar form-group{% if section.settings.align_logo == 'left' %} text-center{% else %} text-left{% endif %} mb-0">
+      <div class="input-group input-group-alternative d-inline-flex">
+        <input type="search" id="search-input" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" autocomplete="off" class="form-control form-control-alternative"  />
+        <div class="input-group-append">
+          <span class="input-group-text"><i class="fa fa-search" onclick="$('#formSearch').submit();return false;" title="{{ 'Search' | t }}"></i></span>
+        </div>
+        <input type="hidden" name="options[prefix]" value="last" aria-hidden="true" />
+        <input type="hidden" name="type" value="product" aria-hidden="true" />
+      </div>
+    </div>
+  	<div class="autocomplete widget">
+  		<div class="products products-livesearch clearfix"></div>
+        <div class="notfound p-4">{{ 'general.search.no_results' | t }}...</div>
+      	<div class="more p-2 border-top clear"><a class="result-btn text-muted livesearch" href="{{ 'search' | url }}"><p>{{ 'general.search.view_all_results' | t }} <em>(0)</em></p></a></div>
+  	</div>
+</form>

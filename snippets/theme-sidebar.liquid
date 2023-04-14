@@ -1,0 +1,129 @@
+{% comment %}
+    Renders a sidebar with the widgets yo your choice.
+	You can summon the widgets with widgets: [widget],[widget],[widget]
+    Accepts:
+    - Service: {HTML} Renders widget with links from customer's support. (optional)
+    - Contact: {HTML} Renders a widget with contact details. (optional)
+    - Social: {HTML} Renders a widget with your social media icons. (optional)
+
+    Usage:
+    {% include 'theme-sidebar', widgets:'blog,contact,social' %}
+{% endcomment %}
+{%- assign social_icons = false -%}
+{%- if
+  settings.social_twitter_link != blank
+  or settings.social_facebook_link != blank
+  or settings.social_pinterest_link != blank
+  or settings.social_instagram_link != blank
+  or settings.social_tumblr_link != blank
+  or settings.social_snapchat_link != blank
+  or settings.social_youtube_link != blank
+  or settings.social_vimeo_link != blank
+  or request.page_type == 'article'
+  or request.page_type == 'blog'
+-%}
+  {%- assign social_icons = true -%}
+{%- endif -%}
+{%- assign custom_widgets = widgets | split: "," -%}
+<div class="custom_widgets mb-4">
+{% for widget in custom_widgets %}
+  {% if widget == 'blog' %}
+  <div class="widget widget-links p-4 mt-4">
+      <div class="title-box">
+          <h4 class="h5 widget-title">{{ 'Blog artikelen' }}</h4>
+      </div>
+      <div class="content-box">
+          <ul class="list-unstyled">
+              {% for link in blog.articles %}
+                  <li class="d-flex align-items-center{% unless forloop.last %} border-bottom pb-2 mb-2{% endunless %}">
+                    	<div class="image mr-3">
+                    		<img src="{{ link.image | img_url:'60x60',crop:'center' }}" alt="{{ link.title }}" />
+                    	</div>
+                    	<div class="details">
+                      		<a href="{{ link.url }}" title="" class="text-body">{{ link.title }}</a>
+                    	</div>
+                  </li>
+              {% endfor %}
+          </ul>
+      </div>
+  </div>
+  {% endif %}
+  {% if widget == 'service' %}
+  <div class="widget widget-links p-4 mt-4">
+      <div class="title-box">
+          <h4 class="h5 widget-title">{{ 'Klantenservice' }}</h4>
+      </div>
+      <div class="content-box">
+          <ul class="list-unstyled">
+              {% for link in linklists.footer_service.links %}
+                  <li>
+                      <a href="{{ link.url }}" title="" class="text-body">{{ link.title }}</a>
+                  </li>
+              {% endfor %}
+          </ul>
+      </div>
+  </div>
+  {% endif %}
+  {% if widget == 'contact' %}
+  <div class="widget widget-list p-4 mt-4">
+      <div class="title-box">
+          <h4 class="h5 widget-title">{{ 'Contactgegevens' }}</h4>
+      </div>
+      <div class="content-box">
+          <div class="contact-details">
+              <ul class="list-unstyled">
+                  <li class="widget-list-item mb-2">
+                      <span>
+                          <i class="fa fa-building-o" aria-hidden="true"></i>
+                          {{ settings.contact_title }}</span>
+                  </li>
+                  <li class="widget-list-item mb-2">
+                      <a href="tel:+{{ settings.contact_phone }}" title="phone" class="widget-list-link text-body">
+                          <i class="fa fa-phone" aria-hidden="true"></i>
+                          {{ settings.contact_phone }}</a>
+                  </li>
+                  <li class="widget-list-item mb-2">
+                      <a href="mailto:{{ settings.contact_email }}" title="email" class="widget-list-link text-body">
+                          <i class="fa fa-envelope" aria-hidden="true"></i>
+                          {{ settings.contact_email }}</a>
+                  </li>
+                  <li class="widget-list-item">
+                      <span>
+                          <i class="fa fa-map-marker" aria-hidden="true"></i>
+                          {{ settings.contact_adres }}</span>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+  {% endif %}
+  {% if widget == 'social' %}
+  <div class="widget widget-social p-4 mt-4">
+      <div class="title-box">
+          <h4 class="h5 widget-title">{{ 'Volg ons' }}</h4>
+      </div>
+      <div class="content-box">
+          {%- assign socials = "facebook twitter pinterest instagram tumblr snapchat youtube vimeo" | split: ' ' -%}
+          {%- if social_icons -%}
+              <div class="list-inline btn-wrapper profile text-left">
+                  {%- for social in socials -%}
+                      {%- assign social_link = social | prepend: 'social_' | append: '_link' | downcase -%}
+                      {%- assign icon_link = social | prepend: 'icon-' | downcase -%}
+                      {%- if settings[social_link] != blank -%}
+                          <a class="btn btn-{{ social }} btn-sm" href="{{ settings[social_link] | escape }}" data-toggle="tooltip" data-placement="bottom" data-original-title="{{ social | capitalize }}" aria-describedby="a11y-external-message">
+                              <i class="fa fa-{{ social }}"></i>
+                          </a>
+                      {%- endif -%}
+                  {%- endfor -%}
+                  {%- if request.page_type == 'blog' or request.page_type == 'article' -%}
+                  <a class="social-icons_link" href="{{ shop.url }}{{ blog.url }}.atom">
+                      <span class="icon_fallback-text">RSS</span>
+                  </a>
+                  {%- endif -%}
+              </div>
+          {% endif %}
+      </div>
+  </div>
+  {% endif %}
+{% endfor %}
+</div>

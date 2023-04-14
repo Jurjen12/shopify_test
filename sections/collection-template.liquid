@@ -1,0 +1,186 @@
+{% case section.settings.grid %}
+  {% when 2 %}
+    {% assign col-lg = 'col-lg-6' %}
+  {% when 3 %}
+    {% assign col-lg = 'col-lg-4' %}
+  {% when 4 %}
+    {% assign col-lg = 'col-lg-3' %}
+{% endcase %}
+<div data-section-id="{{ section.id }}" data-section-type="collection-template">
+  <div class="container collection__main mb-4" id="Collection">
+    {% render 'breadcrumbs' %}
+  	<div class="row">
+      <div class="{% if section.settings.show_sidebar %}col-lg-9{%  else %}col-lg-12{%  endif %} col-md-12 order-lg-2">
+        <header class="collection-header">
+          {%- assign is_filter_by_available = false -%}
+          {%- if section.settings.tags_enable and collection.all_tags.size > 0 -%}
+            {%- assign is_filter_by_available = true -%}
+          {%- endif -%}
+
+          {% if section.settings.show_collection_image and collection.image %}
+            <div class="collection-hero">
+              <div class="collection-hero__image ratio-container lazyload js"
+                   data-bgset="{% render 'bgset', image: collection.image %}"
+                   data-parent-fit="cover"
+                   data-image-loading-animation
+                   loading="lazy"
+              ></div>
+              <div class="collection-title-wrapper">
+                <h1 class="collection-title h3">{{ collection.title }}</h1>
+              </div>
+            </div>
+            {% if is_filter_by_available == false and section.settings.sort_enable == false %}
+              <span class="filters-toolbar__product-count">{{ 'collections.general.items_with_count' | t: count: collection.products_count }}</span>
+            {% endif %}
+            {% if collection.description != blank %}
+              <div class="rte collection-description">
+                <p>{{ collection.description }}</p>
+              </div>
+            {% endif %}
+          {% else %}
+          <div class="section-header">
+            <div class="row">
+              <div class="content-box{% if section.settings.show_collection_image %} col-lg-8{% endif %} col-12">
+                <h1 class="h2">{{ collection.title }}</h1>
+                {% if collection.description != blank %}
+                <div class="rte"><p>{{ collection.description }}</p></div>
+                {% endif %}
+                {% if is_filter_by_available == false and section.settings.sort_enable == false %}
+                  <span class="filters-toolbar__product-count">{{ 'collections.general.items_with_count' | t: count: collection.products_count }}</span>
+                {% endif %}
+              </div>
+              {% if section.settings.show_collection_image %}
+              <div class="image-box col-lg-4 col-12">
+                  <img src="{{ collection.image | image_url: width: 437, height: 241, crop: 'center' }}" loading="lazy" width="437" height="241" title="{{ collection.title }}" class="img-fluid" />
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          {% endif %}
+        </header>
+        
+        <div class="collection-grid">
+          <div class="collection-grid__header d-flex align-items-center justify-content-between border-top py-3 mt-3">
+            <div class="collection-grid__products-count mb-lg-0 mb-0 d-lg-block d-none">
+              <!-- @TODO add change products count -->
+              <span class="js-product-grid__count">{{ collection.products_count }}</span> products
+            </div>
+            {% if section.settings.sort_enable %}
+			<form action="https://{{ shop.domain }}{{ collection.url }}" method="get" id="filter_form" class="mb-0">
+              <div class="collection-grid__sort-by">
+                <label for="sort-by" class="d-inline-block">Sort by:</label>
+                {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
+                <select id="sort-by" name="sort_by" class="form-control d-inline-block w-auto mb-0" onchange="$(this).closest('form').submit();return false;">
+                  	{% for option in collection.sort_options %}
+                 	<option value="{{ option.value }}"{% if sort_by == option.value %} selected="selected"{% endif %}>{{ option.name }}</option>
+               		{% endfor %}
+                </select>
+              </div>
+            </form>
+            {% endif %}
+          </div>
+          <div class="filter-block d-md-none d-block mb-3">
+          	<a href="" onclick="mobileNav($(this));return false;" data-target="#overlayFilters" class="btn btn-icon btn-{% if settings.show_btn_gradient %}gradient-{% endif %}primary btn-block">{{ 'collections.general.filters' | t }}</a>
+          </div>                
+        <div id="products" class="collection-products">
+          <div id="js-product-containers">
+            {%- assign total_pages = section.settings.grid | times: section.settings.rows -%}
+            {% paginate collection.products by total_pages %}
+      		{%- assign products_count = 0 -%}
+            <div id="AjaxinateLoop" class="row collection-grid__products" data-products-count="{{ collection.products_count }}">
+              {% if collection.products_count > 0 %}
+                {% for product in collection.products %}
+                  {%- assign products_count = products_count | plus: 1 -%}
+                  <div class="productborder {{ col-lg }} col-6">{% include 'products-grid' %}</div>
+                {% endfor %}
+              {% else %}
+              <div class="col-12">
+                <p class="collection-grid__empty">{{ 'collections.general.no_matches' | t }}</p>
+              </div>
+              {% endif %}
+            </div>
+            <div id="AjaxinatePagination" class="text-center">
+              {% if paginate.next %}
+                <a href="{{ paginate.next.url }}" class="btn btn-primary my-3">{{ 'general.pagination.load_more' | t }}</a>
+              {% endif %}
+              {% if paginate.previous %}
+                <a href="{{ paginate.previous.url }}" class="btn btn-primary my-3">{{ 'general.pagination.previous' | t }}</a>
+                {%  endif %} 
+            </div>
+            {% endpaginate %}
+          </div>
+
+          {% if collection.products_count == 0 %}
+            <div class="grid__item small--text-center">
+              <p class="text-center">{{ 'collections.general.no_matches' | t }}</p>
+            </div>
+          {% endif %}
+
+          {%- if paginate.pages > 1 -%}
+            {% render 'pagination', paginate: paginate %}
+          {%- endif -%}
+          </div>
+      	</div>
+      </div>
+      <div class="col-lg-3 col-md-12 order-lg-1 d-lg-block d-none">
+        {%  if section.settings.show_sidebar %}
+        {% render 'theme-sidebar-collection' %}
+          {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": {
+    "nl": "Collectiepagina's"
+  },
+  "settings": [
+    {
+      "type": "range",
+      "id": "grid",
+      "label": {
+        "nl": "Producten per rij"
+      },
+      "default": 4,
+      "min": 2,
+      "max": 4,
+      "step": 1
+    },
+    {
+      "type": "range",
+      "id": "rows",
+      "label": {
+        "nl": "Rijen per pagina"
+      },
+      "default": 4,
+      "min": 1,
+      "max": 24,
+      "step": 1
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sidebar",
+      "label": {"nl":"Categorie balk weergeven"},
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_image",
+      "label": {
+        "nl": "Collectieafbeelding weergeven"
+      },
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "sort_enable",
+      "label": {
+        "nl": "Sortering inschakelen"
+      },
+      "default": true
+    }
+  ]
+}
+{% endschema %}

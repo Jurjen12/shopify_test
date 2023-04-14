@@ -1,0 +1,652 @@
+<div id="content" class="my-4">
+  <div class="container">
+    <div class="row">
+      {% for block in section.blocks %}
+      {% liquid 
+          case block.settings.width
+            when '25%'
+              assign max_height = 250
+              assign block_width = 'col-lg-3'
+            when '33%'
+              assign max_height = 345
+              assign block_width = 'col-lg-4'
+            when '50%'
+              assign max_height = 530
+              assign block_width = 'col-lg-6'
+            when '66%'
+              assign max_height = 720
+              assign block_width = 'col-lg-8'
+            when '75%'
+              assign max_height = 810
+              assign block_width = 'col-lg-9'
+            when '100%'
+              assign max_height = 1090
+              assign block_width = 'col-lg-12'
+          endcase
+        %}
+        {% if block.type == 'image' %}
+          {% capture img_id %}CustomImage--{{ forloop.index }}-{{ block.settings.image.id }}{% endcapture %}
+          {% capture img_wrapper_id %}CustomImageWrapper--{{ forloop.index }}-{{ block.settings.image.id }}{% endcapture %}
+        {% endif %}
+        <div id="{{ block.type }}" class="{{ block_width }} col-12{% if block.settings.align_text == 'text-center' %} m-auto{% endif %}">
+            <div class="content-box">
+               {% case block.type %}
+                {% when 'image' %}
+                   {% if block.settings.image != blank %}
+                   {%- assign img_url = block.settings.image | image_url: 'original', scale: 1, crop: 'center' -%}
+                   <img src="{{ img_url }}" id="{{ img_id }}" width="auto" height="auto" loading="lazy" alt="{{ block.settings.image.alt | escape }}">
+                  {% else %}
+                   {{ 'image' | placeholder_svg_tag: 'placeholder-svg border img-fluid' }}
+                  {% endif %}
+                {% when 'text' %}
+                <div class="medium-up text-{{ block.settings.align_text }}">
+                  {% if block.settings.title != blank %}
+                     <h3 class="{{ section.settings.title_font_weight }}">{{ block.settings.title | escape }}</h3>
+                  {% endif %}
+                  {% if block.settings.text != blank %}
+                      <div class="rte-setting rte">{{ block.settings.text }}</div>
+                   {% endif %}
+                </div>
+                {% when 'video' %}
+                 <div class="video-wrapper">
+                 {% if block.settings.video_url == blank %}
+                   <iframe src="//www.youtube.com/embed/_9VUPq3SxOc?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+                 {% else %}
+                   {% if block.settings.video_url.type == "youtube" %}
+                      <iframe src="//www.youtube.com/embed/{{ block.settings.video_url.id }}?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+                   {% endif %}
+                   {% if block.settings.video_url.type == "vimeo" %}
+                      <iframe src="//player.vimeo.com/video/{{ block.settings.video_url.id }}?byline=0&portrait=0&badge=0" width="670" height="380" frameborder="0" allowfullscreen></iframe>
+                   {% endif %}
+                 {% endif %}
+                </div>
+              	{% when 'contact' %}
+              <div class="title-box"><h3 class="{{ section.settings.title_font_weight }}">{{ 'contact.title' | t }}</h3></div>
+              	<div class="content-box">
+                  {%- assign formId = 'ContactForm' -%}
+                  {% form 'contact', id: formId %}
+                    {% render 'theme-messages', form: form, form_id: formId %}
+                    <div class="form-group">
+                  		<label for="{{ formId }}-name">{{ 'contact.form.name' | t }}</label>
+                        <input type="text" id="{{ formId }}-name" class="form-control mb-2" name="contact[{{ 'contact.form.name' | t }}]" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+                    </div> 
+                  	<div class="form-row">
+                      <div class="form-group col-md-6">
+                          <label for="{{ formId }}-email">{{ 'contact.form.email' | t }} <span aria-hidden="true">*</span></label>
+                          <input
+                            type="email"
+                            id="{{ formId }}-email"
+                            class="form-control mb-2" 
+                            name="contact[email]"
+                            autocorrect="off"
+                            autocapitalize="off"
+                            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                            aria-required="true"
+                            {%- if form.errors contains 'email' -%}
+                              class="input--error"
+                              aria-invalid="true"
+                              aria-describedby="{{ formId }}-email-error"
+                            {%- endif -%}
+                            >
+                          {%- if form.errors contains 'email' -%}
+                            <span id="{{ formId }}-email-error" class="input-error-message">
+                              <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+                              <span>{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.</span>
+                            </span>
+                          {%- endif -%}
+                      </div>
+                      <div class="form-group col-md-6">
+                          <label for="{{ formId }}-phone">{{ 'contact.form.phone' | t }}</label>
+                          <input type="tel" id="{{ formId }}-phone" class="form-control mb-2" name="contact[{{ 'contact.form.phone' | t }}]" pattern="[0-9\-]*" value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+                      </div>
+                  	</div>
+                  	<div class="form-group">
+                    	<label for="{{ formId }}-message">{{ 'contact.form.message' | t }}</label>
+                    	<textarea rows="5" id="{{ formId }}-message" class="form-control mb-2" name="contact[{{ 'contact.form.message' | t }}]">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+                  	</div>
+                    <input type="submit" class="btn btn-{% if settings.show_btn_gradient %}gradient-{% endif %}primary" value="{{ 'contact.form.submit' | t }}">
+                  {% endform %}
+              	</div>
+               {% endcase %}
+            </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+  
+{% schema %}
+{
+  "name": {
+    "nl": "Aangepaste content"
+  },
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": {
+        "nl": "Titel"
+      },
+      "default": {
+        "nl": "Aangepaste content"
+      }
+    },
+    {
+      "type": "select",
+      "id": "title_text_align",
+      "label": {
+        "nl": "Uitlijning titel"
+      },
+      "default": "text-left",
+      "options": [
+        {
+          "label": {
+            "nl": "Titel links uitlijnen"
+          },
+          "value": "text-left"
+        },
+        {
+          "label": {
+            "nl": "Titel in het midden"
+          },
+          "value": "text-center"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": {
+        "nl": "Dikte van het lettertype"
+      },
+      "default": "font-weight-normal",
+      "options": [
+        {
+          "label": {
+            "nl": "Dun"
+          },
+          "value": "font-weight-light"
+        },
+        {
+          "label": {
+            "nl": "Normaal"
+          },
+          "value": "font-weight-normal"
+        },
+        {
+          "label": {
+            "nl": "Bold"
+          },
+          "value": "font-weight-bold"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": {
+        "nl": "Tekst"
+      },
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": {
+            "nl": "Titel"
+          },
+          "default": {
+            "nl": "Vertel over je merk"
+          }
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": {
+            "nl": "Tekst"
+          },
+          "default": {
+            "nl": "<p>Gebruik deze tekst om informatie over je merk te delen met je klanten. Beschrijf een product, deel aankondigingen of verwelkom klanten in je winkel.</p>"
+          }
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": {
+            "nl": "Containerbreedte"
+          },
+          "default": "50%",
+          "options": [
+            {
+              "value": "25%",
+              "label": {
+                "nl": "25%"
+              }
+            },
+            {
+              "value": "33%",
+              "label": {
+                "nl": "33%"
+              }
+            },
+            {
+              "value": "50%",
+              "label": {
+                "nl": "50%"
+              }
+            },
+            {
+              "value": "66%",
+              "label": {
+                "nl": "66%"
+              }
+            },
+            {
+              "value": "75%",
+              "label": {
+                "nl": "75%"
+              }
+            },
+            {
+              "value": "100%",
+              "label": {
+                "nl": "100%"
+              }
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": {
+            "nl": "Verticaal uitlijnen"
+          },
+          "default": "center",
+          "options": [
+            {
+              "value": "top-middle",
+              "label": {
+                "nl": "Boven"
+              }
+            },
+            {
+              "value": "center",
+              "label": {
+                "nl": "Midden"
+              }
+            },
+            {
+              "value": "bottom-middle",
+              "label": {
+                "nl": "Onder"
+              }
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "align_text",
+          "label": {
+            "nl": "Horizontaal uitlijnen"
+          },
+          "default": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": {
+                "nl": "Links"
+              }
+            },
+            {
+              "value": "center",
+              "label": {
+                "nl": "Gecentreerd"
+              }
+            },
+            {
+              "value": "right",
+              "label": {
+                "nl": "Rechts"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": {
+        "nl": "Afbeelding"
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": {
+            "nl": "Afbeelding"
+          }
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": {
+            "nl": "Containerbreedte"
+          },
+          "default": "50%",
+          "options": [
+            {
+              "value": "25%",
+              "label": {
+                "nl": "25%"
+              }
+            },
+            {
+              "value": "33%",
+              "label": {
+                "nl": "33%"
+              }
+            },
+            {
+              "value": "50%",
+              "label": {
+                "nl": "50%"
+              }
+            },
+            {
+              "value": "66%",
+              "label": {
+                "nl": "66%"
+              }
+            },
+            {
+              "value": "75%",
+              "label": {
+                "nl": "75%"
+              }
+            },
+            {
+              "value": "100%",
+              "label": {
+                "nl": "100%"
+              }
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": {
+            "nl": "Verticaal uitlijnen"
+          },
+          "default": "center",
+          "options": [
+            {
+              "value": "top-left",
+              "label": {
+                "nl": "Linksboven"
+              }
+            },
+            {
+              "value": "top-middle",
+              "label": {
+                "nl": "Midden boven"
+              }
+            },
+            {
+              "value": "top-right",
+              "label": {
+                "nl": "Rechtsboven"
+              }
+            },
+            {
+              "value": "middle-left",
+              "label": {
+                "nl": "Midden links"
+              }
+            },
+            {
+              "value": "center",
+              "label": {
+                "nl": "Midden"
+              }
+            },
+            {
+              "value": "middle-right",
+              "label": {
+                "nl": "Midden rechts"
+              }
+            },
+            {
+              "value": "bottom-left",
+              "label": {
+                "nl": "Linksonder"
+              }
+            },
+            {
+              "value": "bottom-middle",
+              "label": {
+                "nl": "Midden onder"
+              }
+            },
+            {
+              "value": "bottom-right",
+              "label": {
+                "nl": "Rechtsonder"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "name": {
+        "nl": "Video"
+      },
+      "settings": [
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": {
+            "nl": "YouTube- of Vimeo-link"
+          },
+          "accept": [
+            "youtube",
+            "vimeo"
+          ]
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": {
+            "nl": "Containerbreedte"
+          },
+          "default": "50%",
+          "options": [
+            {
+              "value": "25%",
+              "label": {
+                "nl": "25%"
+              }
+            },
+            {
+              "value": "33%",
+              "label": {
+                "nl": "33%"
+              }
+            },
+            {
+              "value": "50%",
+              "label": {
+                "nl": "50%"
+              }
+            },
+            {
+              "value": "66%",
+              "label": {
+                "nl": "66%"
+              }
+            },
+            {
+              "value": "75%",
+              "label": {
+                "nl": "75%"
+              }
+            },
+            {
+              "value": "100%",
+              "label": {
+                "nl": "100%"
+              }
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": {
+            "nl": "Verticaal uitlijnen"
+          },
+          "default": "center",
+          "options": [
+            {
+              "value": "top-left",
+              "label": {
+                "nl": "Linksboven"
+              }
+            },
+            {
+              "value": "top-middle",
+              "label": {
+                "nl": "Midden boven"
+              }
+            },
+            {
+              "value": "top-right",
+              "label": {
+                "nl": "Rechtsboven"
+              }
+            },
+            {
+              "value": "middle-left",
+              "label": {
+                "nl": "Midden links"
+              }
+            },
+            {
+              "value": "center",
+              "label": {
+                "nl": "Midden"
+              }
+            },
+            {
+              "value": "middle-right",
+              "label": {
+                "nl": "Midden rechts"
+              }
+            },
+            {
+              "value": "bottom-left",
+              "label": {
+                "nl": "Linksonder"
+              }
+            },
+            {
+              "value": "bottom-middle",
+              "label": {
+                "nl": "Midden onder"
+              }
+            },
+            {
+              "value": "bottom-right",
+              "label": {
+                "nl": "Rechtsonder"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "contact",
+      "name": {
+        "nl": "Contactformulier"
+      },
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "contact_form",
+          "label": {
+            "nl": "Activeer het contactformulier"
+          }
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": {
+            "nl": "Containerbreedte"
+          },
+          "default": "50%",
+          "options": [
+            {
+              "value": "25%",
+              "label": {
+                "nl": "25%"
+              }
+            },
+            {
+              "value": "33%",
+              "label": {
+                "nl": "33%"
+              }
+            },
+            {
+              "value": "50%",
+              "label": {
+                "nl": "50%"
+              }
+            },
+            {
+              "value": "66%",
+              "label": {
+                "nl": "66%"
+              }
+            },
+            {
+              "value": "75%",
+              "label": {
+                "nl": "75%"
+              }
+            },
+            {
+              "value": "100%",
+              "label": {
+                "nl": "100%"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "nl": "Algemene SEO Tekst"
+      },
+      "category": {
+        "nl": "Tekst"
+      },
+      "blocks": [
+        {
+          "type": "text"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

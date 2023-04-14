@@ -1,0 +1,689 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Theme Unity",
+    "theme_author": "InStijl Media",
+    "theme_version": "1.0.1",
+    "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/using-themes\/themes-by-shopify\/debut",
+    "theme_support_url": "https:\/\/instijlmedia.nl\/"
+  },
+  {
+    "name": {
+      "nl": "Kleuren"
+    },
+    "settings": [
+      {
+        "type": "header",
+        "content": {
+          "nl": "Tekst"
+        }
+      },
+      {
+        "type": "color",
+        "id": "color_links_text",
+        "label": {
+          "nl": "Links"
+        },
+        "default": "#3a3a3a"
+      },
+      {
+        "type": "color",
+        "id": "color_body_text",
+        "label": {
+          "nl": "Hoofdtekst"
+        },
+        "default": "#333232"
+      },
+      {
+        "type": "color",
+        "id": "color_topnav_text",
+        "label": {
+          "nl": "Topnavigatie tekst"
+        },
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "color_navbar_text",
+        "label": {
+          "nl": "Navigatietekst"
+        },
+        "default": "#333232"
+      },
+      {
+        "type": "color",
+        "id": "color_newsletter_bg",
+        "label": {
+          "nl": "Nieuwsbrief achtergrond"
+        },
+        "default": "#f7f7f7"
+      },
+      {
+        "type": "color",
+        "id": "color_footer_text",
+        "label": {
+          "nl": "Footertekst"
+        },
+        "default": "#333232"
+      },
+      {
+        "type": "header",
+        "content": {
+          "nl": "Achtergrondkleur"
+        }
+      },
+      {
+        "type": "color",
+        "id": "color_topnav_bg",
+        "label": {
+          "nl": "Topnavigatie"
+        },
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_navbar_bg",
+        "label": {
+          "nl": "Navigatie"
+        },
+        "default": "#f2f7fc"
+      },
+      {
+        "type": "color",
+        "id": "color_sale",
+        "label": {
+          "nl": "Aanbiedingslabel"
+        },
+        "default": "#EA0606"
+      },
+      {
+        "type": "color",
+        "id": "color_newsletter_text",
+        "label": {
+          "nl": "Nieuwsbrief text"
+        },
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "color_footer_bg",
+        "label": {
+          "nl": "Footer"
+        },
+        "default": "#f6f6f6"
+      },
+      {
+        "type": "header",
+        "content": {
+          "nl": "Knoppen"
+        }
+      },
+      {
+        "type": "checkbox",
+        "id": "show_btn_gradient",
+        "label": {
+          "nl": "Toon gradient in button"
+        },
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": {
+          "nl": "Primaire kleur"
+        },
+        "default": "#00bcd4"
+      },
+      {
+        "type": "color",
+        "id": "color_primary_gradient",
+        "label": {
+          "nl": "Primaire gradient kleur"
+        },
+        "default": "#198ae7"
+      },
+      {
+        "type": "color",
+        "id": "color_primary_text",
+        "label": {
+          "nl": "Primaire labels"
+        },
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": {
+          "nl": "Secondaire kleur"
+        },
+        "default": "#293439"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary_gradient",
+        "label": {
+          "nl": "Secondaire gradient kleur"
+        },
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary_text",
+        "label": {
+          "nl": "Secondaire labels"
+        },
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_cart_button",
+        "label": {
+          "nl": "Winkelwagen knoppen"
+        },
+        "default": "#00b900"
+      },
+      {
+        "type": "color",
+        "id": "color_cart_button_gradient",
+        "label": {
+          "nl": "Winkelwagen gradient kleur"
+        },
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_cart_button_text",
+        "label": {
+          "nl": "Winkelwagen labels"
+        },
+        "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": {
+          "nl": "Formuliervelden"
+        }
+      },
+      {
+        "type": "color",
+        "id": "color_text_field_text",
+        "label": {
+          "nl": "Tekst"
+        },
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "color_text_field_border",
+        "label": {
+          "nl": "Randen"
+        },
+        "default": "#cccccc"
+      },
+      {
+        "type": "color",
+        "id": "color_text_field",
+        "label": {
+          "nl": "Achtergrond"
+        },
+        "default": "#ffffff"
+      }
+    ]
+  },
+  {
+    "name": {
+      "nl": "Typografie"
+    },
+    "settings": [
+      {
+        "type": "header",
+        "content": {
+          "nl": "Koppen en knoppen"
+        }
+      },
+      {
+        "type": "font_picker",
+        "id": "type_header_font",
+        "label": {
+          "nl": "Lettertype"
+        },
+        "default": "helvetica_n7"
+      },
+      {
+        "type": "range",
+        "id": "type_header_base_size",
+        "label": {
+          "nl": "Afmeting kopbasis"
+        },
+        "default": 26,
+        "min": 20,
+        "max": 36,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": {
+          "nl": "Hoofdtekst"
+        }
+      },
+      {
+        "type": "font_picker",
+        "id": "type_base_font",
+        "label": {
+          "nl": "Lettertype"
+        },
+        "default": "helvetica_n4"
+      },
+      {
+        "type": "range",
+        "id": "type_base_size",
+        "label": {
+          "nl": "Basisafmeting"
+        },
+        "default": 15,
+        "min": 14,
+        "max": 20,
+        "step": 1,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Hoofdmenu"
+      },
+      {
+        "type": "link_list",
+        "id": "main_linklist",
+        "label": {
+          "de": "Menü",
+          "en": "Menu",
+          "nl": "Menu"
+        },
+        "default": "main-menu"
+      },
+      {
+        "type": "header",
+        "content": "USP 1"
+      },
+      {
+        "type": "text",
+        "id": "usp_1_icon",
+        "label": "USP 1 icon",
+        "info": "Enter here the [cheatcodes](https:\/\/fontawesome.com\/v4.7.0\/icons\/)from fontawesome.",
+        "placeholder": "check"
+      },
+      {
+        "type": "text",
+        "id": "usp_1",
+        "label": "USP 1",
+        "info": "Enter here your usp",
+        "placeholder": "Vóór 15u besteld, volgende dag in huis"
+      },
+      {
+        "id": "usp_1_url",
+        "type": "url",
+        "label": "USP 1 Link"
+      },
+      {
+        "type": "header",
+        "content": "USP 2"
+      },
+      {
+        "type": "text",
+        "id": "usp_2_icon",
+        "label": "USP 2 icon",
+        "info": "Enter here the [cheatcodes](https:\/\/fontawesome.com\/v4.7.0\/icons\/)from fontawesome.",
+        "placeholder": "check"
+      },
+      {
+        "type": "text",
+        "id": "usp_2",
+        "label": "USP 2",
+        "info": "Enter here your usp",
+        "placeholder": "Bedenktijd van 14 dagen"
+      },
+      {
+        "id": "usp_2_url",
+        "type": "url",
+        "label": "USP 2 Link"
+      },
+      {
+        "type": "header",
+        "content": "USP 3"
+      },
+      {
+        "type": "text",
+        "id": "usp_3_icon",
+        "label": "USP 3 icon",
+        "info": "Enter here the [cheatcodes](https:\/\/fontawesome.com\/v4.7.0\/icons\/)from fontawesome.",
+        "placeholder": "check"
+      },
+      {
+        "type": "text",
+        "id": "usp_3",
+        "label": "USP 3",
+        "info": "Enter here your usp",
+        "placeholder": "Snelle levering"
+      },
+      {
+        "id": "usp_3_url",
+        "type": "url",
+        "label": "USP 3 Link"
+      },
+      {
+        "type": "header",
+        "content": "USP 4"
+      },
+      {
+        "type": "text",
+        "id": "usp_4_icon",
+        "label": "USP 4 icon",
+        "info": "Enter here the [cheatcodes](https:\/\/fontawesome.com\/v4.7.0\/icons\/)from fontawesome.",
+        "placeholder": "check"
+      },
+      {
+        "type": "text",
+        "id": "usp_4",
+        "label": "USP 4",
+        "info": "Enter here your usp",
+        "placeholder": "Snelle levering"
+      },
+      {
+        "id": "usp_4_url",
+        "type": "url",
+        "label": "USP 4 Link"
+      }
+    ]
+  },
+  {
+    "name": "Producten",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Instellingen"
+      },
+      {
+        "type": "select",
+        "id": "product_text_align",
+        "label": {
+          "nl": "Uitlijning product details"
+        },
+        "default": "text-left",
+        "options": [
+          {
+            "label": {
+              "nl": "Links"
+            },
+            "value": "text-left"
+          },
+          {
+            "label": {
+              "nl": "Midden"
+            },
+            "value": "text-center"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Details"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": {
+          "nl": "Productleveranciers weergeven"
+        },
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "product_price_display",
+        "label": {
+          "nl": "De weergave van de productprijs."
+        },
+        "default": "without_currency",
+        "options": [
+          {
+            "label": {
+              "nl": "Geen valuta"
+            },
+            "value": "without_currency"
+          },
+          {
+            "label": {
+              "nl": "Met valuta"
+            },
+            "value": "with_currency"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": {
+      "en": "Contact",
+      "nl": "Contact"
+    },
+    "settings": [
+      {
+        "type": "text",
+        "id": "contact_title",
+        "label": {
+          "en": "Company name",
+          "nl": "Bedrijfsnaam"
+        },
+        "info": {
+          "en": "example: My Company",
+          "nl": "example: My Company"
+        }
+      },
+      {
+        "type": "text",
+        "id": "contact_adres",
+        "label": {
+          "en": "Address",
+          "nl": "Huisadres"
+        },
+        "info": {
+          "en": "example: Teststreet 1",
+          "nl": "example: Teststraat 1"
+        }
+      },
+      {
+        "type": "text",
+        "id": "contact_phone",
+        "label": {
+          "en": "Phone",
+          "nl": "Telefoonnummer"
+        },
+        "info": {
+          "en": "example: 0612345678",
+          "nl": "example: 0612345678"
+        }
+      },
+      {
+        "type": "text",
+        "id": "contact_email",
+        "label": {
+          "en": "E-mailaddress",
+          "nl": "E-mailadres"
+        },
+        "info": {
+          "en": "example: info@test.com",
+          "nl": "example: info@test.nl"
+        }
+      }
+    ]
+  },
+  {
+    "name": {
+      "en": "Social media",
+      "nl": "Social media"
+    },
+    "settings": [
+      {
+        "type": "header",
+        "content": {
+          "en": "Social sharing options",
+          "nl": "Opties voor sociaal delen"
+        }
+      },
+      {
+        "type": "checkbox",
+        "id": "share_facebook",
+        "label": {
+          "en": "Share on Facebook",
+          "nl": "Delen op Facebook"
+        },
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_twitter",
+        "label": {
+          "en": "Tweet on Twitter",
+          "nl": "Twitteren op Twitter"
+        },
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_pinterest",
+        "label": {
+          "en": "Pin on Pinterest",
+          "nl": "Pinnen op Pinterest"
+        },
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Social accounts",
+          "nl": "Socialmedia-accounts"
+        }
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": {
+          "en": "Twitter",
+          "nl": "Twitter"
+        },
+        "info": {
+          "en": "https:\/\/twitter.com\/shopify",
+          "nl": "https:\/\/twitter.com\/shopify"
+        }
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": {
+          "en": "Facebook",
+          "nl": "Facebook"
+        },
+        "info": {
+          "en": "https:\/\/facebook.com\/shopify",
+          "nl": "https:\/\/facebook.com\/shopify"
+        }
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": {
+          "en": "Pinterest",
+          "nl": "Pinterest"
+        },
+        "info": {
+          "en": "https:\/\/pinterest.com\/shopify",
+          "nl": "https:\/\/pinterest.com\/shopify"
+        }
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": {
+          "en": "Instagram",
+          "nl": "Instagram"
+        },
+        "info": {
+          "en": "http:\/\/instagram.com\/shopify",
+          "nl": "http:\/\/instagram.com\/shopify"
+        }
+      },
+      {
+        "type": "text",
+        "id": "social_tumblr_link",
+        "label": {
+          "en": "Tumblr",
+          "nl": "Tumblr"
+        },
+        "info": {
+          "en": "http:\/\/shopify.tumblr.com",
+          "nl": "http:\/\/shopify.tumblr.com"
+        }
+      },
+      {
+        "type": "text",
+        "id": "social_snapchat_link",
+        "label": {
+          "en": "Snapchat",
+          "nl": "Snapchat"
+        },
+        "info": {
+          "en": "https:\/\/www.snapchat.com\/add\/shopify",
+          "nl": "https:\/\/www.snapchat.com\/add\/shopify"
+        }
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": {
+          "en": "YouTube",
+          "nl": "YouTube"
+        },
+        "info": {
+          "en": "https:\/\/www.youtube.com\/shopify",
+          "nl": "https:\/\/www.youtube.com\/shopify"
+        }
+      },
+      {
+        "type": "text",
+        "id": "social_vimeo_link",
+        "label": {
+          "en": "Vimeo",
+          "nl": "Vimeo"
+        },
+        "info": {
+          "en": "https:\/\/vimeo.com\/shopify",
+          "nl": "https:\/\/vimeo.com\/shopify"
+        }
+      }
+    ]
+  },
+  {
+    "name": {
+      "en": "Favicon",
+      "nl": "Favicon"
+    },
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": {
+          "en": "Favicon image",
+          "nl": "Favicon-afbeelding"
+        },
+        "info": {
+          "en": "Will be scaled down to 32 x 32px",
+          "nl": "Wordt verkleind tot 32x32 pixels"
+        }
+      }
+    ]
+  }
+]

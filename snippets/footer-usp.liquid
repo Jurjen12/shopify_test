@@ -1,0 +1,25 @@
+{% capture theme_usps %}
+  {{ settings.usp_1 }}
+  {{ settings.usp_2 }}
+  {{ settings.usp_3 }}
+  {{ settings.usp_4 }}
+{% endcapture %}
+{% assign checkUsps = false %}
+{% assign themeUsps = theme_usps | strip | newline_to_br | strip_newlines | split: "<br />"  %}
+{% for usp in themeUsps %}{% if usp != blank %}{% assign checkUsps = true %}{% endif %}{% endfor %}
+{% if checkUsps %}
+<div class="usp border-top" aria-label="usp" aria-describedby="usp-info" tabindex="-1" >
+    <div class="container">
+      <ul class="usp-nav list-unstyled d-lg-flex align-items-center justify-content-between py-3{% if section.settings.show_usp_desc %} with_desc{% endif %} mb-0">
+        {% for usp in themeUsps %}
+        <li class="usp-item">
+            <div class="item-details d-flex align-items-center">
+            	<i data-feather="check" stroke-width="2" height="16" width="16" class="fa fa-check-circle text-primary align-text-bottom mr-1"></i>
+              	<span>{{ usp }}</span> 
+            </div> 
+       	</li>
+		{% endfor %}
+      </ul>
+    </div>
+ </div>
+{% endif %}
