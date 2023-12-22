@@ -11,8 +11,30 @@
 
         <a href="javascript:;" class="submit-form">Submit Form</a>
     </form>
+   <div class="products">
+     
+   </div>
 </div>
+<script>
+  function getStorage(storageName){
+      let data = '';
+      try {
+        data = JSON.parse(localStorage.getItem(storageName));
+      } catch(exception){
+        data = "Exception has accured with error message " + exception;
+      }
 
+      return data;
+  }
+  
+  document.addEventListener("DOMContentLoaded", function () {
+    var products = getStorage('ismProducts');
+
+    
+  });
+
+  
+</script>
 
 {% schema %}
 {
