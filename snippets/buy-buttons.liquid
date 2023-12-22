@@ -134,5 +134,14 @@
 
   <a href="javascript:;" class="btn-add-to-quote">Add to quote</a>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelector('.btn-add-to-quote').addEventListener("click", function () {
+
+        console.log('test');
+      });
+    });
+  </script>
+
   <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
 </div>
