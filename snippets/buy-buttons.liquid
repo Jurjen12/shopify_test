@@ -135,18 +135,18 @@
   <a href="javascript:;" class="btn-add-to-quote">Add to quote</a>
 
   <script>  
-  var quoteBtn = document.querySelector('.btn-add-to-quote'); 
+    var quoteBtn = document.querySelector('.btn-add-to-quote'); 
     
-  function getStorage(storageName){
-    let data = '';
-    try {
-      data = JSON.parse(localStorage.getItem(storageName));
-    } catch(exception){
-      data = "Exception has accured with error message " + exception;
-    }
+    function getStorage(storageName){
+      let data = '';
+      try {
+        data = JSON.parse(localStorage.getItem(storageName));
+      } catch(exception){
+        data = "Exception has accured with error message " + exception;
+      }
 
-    return data;
-  }
+      return data;
+    }
 
     function setStorage(products){
       
@@ -205,9 +205,6 @@
         }
 
         var Set = setStorage(products);
-
-        console.log(Set);
-        console.log(getStorage('ismProducts'));
         
       });
     });
