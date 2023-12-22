@@ -139,7 +139,7 @@
   var productData = {
     "title"    : '{{ product.title }}',
     "id"       : '{{ product.id }}',
-    "image"    : '{{ product.images[0] }}',
+    "image"    : '{{ product.images[0] | image_url }}',
     "variant"  : '{{ selected_or_first_available_variant }}',
     "quantity" : 0, 
   };
