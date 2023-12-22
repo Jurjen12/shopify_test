@@ -137,16 +137,20 @@
   <script>  
   
   function getStorage(storageName){
-    return JSON.parse(localStorage.getItem(storageName));
+    let return = '';
+    try {
+      let return = JSON.parse(localStorage.getItem(storageName));
+    } catch(exception){
+      RunError("Error has occured" + exception);
+    }
+    return return;
   }
   var quoteBtn = document.querySelector('.btn-add-to-quote'); 
     document.addEventListener("DOMContentLoaded", function () {
       quoteBtn.addEventListener("click", function () {
 
-        var test = {};
-        test['test'] = 'test';
 
-        localStorage.setItem('ismProducts', JSON.stringify(test));
+        localStorage.setItem('ismProducts', 'test');
         let products = getStorage('ismProducts');
 
         console.log(products);
