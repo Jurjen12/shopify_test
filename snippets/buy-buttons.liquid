@@ -135,7 +135,14 @@
   <a href="javascript:;" class="btn-add-to-quote">Add to quote</a>
 
   <script>  
-  
+  var productData = {
+    "title"    : '{{ product.title }}',
+    "id"       : '{{ product.id }}',
+    "image"    : '{{ product.images[0] }}',
+    "variant"  : '{{ selected_or_first_available_variant }}',
+    "quantity" : 0, 
+  };
+    
   function getStorage(storageName){
     let data = '';
     try {
@@ -165,7 +172,9 @@
     document.addEventListener("DOMContentLoaded", function () {
       quoteBtn.addEventListener("click", function () {
 
-        
+        let products = {};
+
+        products['{{ product.id }}']
         
       });
     });
