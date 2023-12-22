@@ -7,8 +7,8 @@
       <input type="text" name="products" id="quote-products-input" style="display:none;">
         <label for="email">E-mail</label>
         <input id="email" name="email" class="email" required/>
-        <label for="email">E-mail</label>
-        <input id="email" name="email" class="email" required/>
+        <label for="name">name</label>
+        <input id="name" name="name" class="name" required/>
 
         <a href="javascript:;" class="submit-form">Submit Form</a>
     </form>
@@ -49,8 +49,11 @@
       var data = {};
 
       data['products'] = getStorage('ismProducts');
-
-      console.log(data);
+      data['customer'] = {
+        "email" => document.querySelector('#email').value;
+        "name" => document.querySelector('#name').value;
+      }
+      
     })
 
   });
