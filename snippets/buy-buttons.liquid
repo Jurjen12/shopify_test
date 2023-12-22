@@ -163,7 +163,7 @@
       products = products.concat(oldProducts, newProducts);
 
       try {
-        localStorage.setItem("ismProducts", products);
+        localStorage.setItem("ismProducts", json.Stringify(products));
       } catch(exception){
         return "Exception has accured with error message " + exception;
       }
@@ -173,6 +173,12 @@
     
     document.addEventListener("DOMContentLoaded", function () {
       quoteBtn.addEventListener("click", function () {
+
+        if (localStorage.getItem("ismProducts") === null) {
+          var empty = {};
+          localStorage.setItem('ismProducts', json.Stringify(empty))
+}
+        
         var currProducts = getStorage('ismProducts');
 
         
