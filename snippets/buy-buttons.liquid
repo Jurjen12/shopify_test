@@ -180,8 +180,9 @@
         }
         
         var currProducts = getStorage('ismProducts');
+        var empty        = (Object.keys(currProducts).length == 0) ? true : false;
 
-        console.log(currProducts);
+        console.log(empty);
         // if()
         
         // var products = {};
