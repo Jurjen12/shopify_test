@@ -173,7 +173,10 @@
     
     document.addEventListener("DOMContentLoaded", function () {
       quoteBtn.addEventListener("click", function () {
+        var currProducts = getStorage('ismProducts');
 
+        
+        
         var products = {};
         
         productData['quantity'] = document.querySelector('.quantity__input').value; 
