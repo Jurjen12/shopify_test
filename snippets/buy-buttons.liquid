@@ -136,15 +136,6 @@
 
   <script>  
   var quoteBtn = document.querySelector('.btn-add-to-quote'); 
-  var productData = {
-    "title"         : '{{ product.title }}',
-    "id"            : '{{ product.id }}',
-    "image"         : '{{ product.images[0] | image_url }}',
-    "variant_id"    : '{{ product.selected_or_first_available_variant.id }}',
-    "variant_title" : '{{ product.selected_or_first_available_variant.title }}',
-    'url'           : '{{ shop.url }}{{ product.selected_or_first_available_variant.url }}',
-    "quantity" : 0, 
-  };
     
   function getStorage(storageName){
     let data = '';
@@ -171,6 +162,17 @@
     document.addEventListener("DOMContentLoaded", function () {
       quoteBtn.addEventListener("click", function () {
 
+      var productData = {
+        "title"         : '{{ product.title }}',
+        "id"            : '{{ product.id }}',
+        "image"         : '{{ product.images[0] | image_url }}',
+        "variant_id"    : '{{ product.selected_or_first_available_variant.id }}',
+        "variant_title" : '{{ product.selected_or_first_available_variant.title }}',
+        'url'           : '{{ shop.url }}{{ product.selected_or_first_available_variant.url }}',
+        "quantity" : 0, 
+      };
+
+        console.log(productData[])
 
         var products = getStorage('ismProducts');
         var quantity = document.querySelector('.quantity__input').value;
