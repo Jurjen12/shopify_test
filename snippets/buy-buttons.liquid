@@ -139,7 +139,7 @@
   function getStorage(storageName){
     let data = '';
     try {
-       data = JSON.parse(localStorage.getItem(storageName));
+      data = JSON.parse(localStorage.getItem(storageName));
     } catch(exception){
       data = "Exception has accured with error message " + exception;
     }
