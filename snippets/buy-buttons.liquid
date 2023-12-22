@@ -184,6 +184,7 @@
           for (const [key, value] of Object.entries(products)) {
             if(value.id == productData['id']){
               add = false;
+              quantity = parseInt(quantiy) + parseInt(value.quantity);
             }
           }
         } else {
@@ -191,7 +192,7 @@
         }
 
         if(add){
-          productData['quantity'] = quantity;
+          productData['quantity'] = parseInt(quantity);
           products[productData['id']] = productData;
         }
 
