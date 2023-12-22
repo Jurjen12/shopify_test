@@ -147,8 +147,15 @@
   }
 
     function setStorage(newProducts){
-      var oldProducts = getStorage('ismProducts');
+      let products = [];
+      let oldProducts = getStorage('ismProducts');
+      let newProducts = newProducts;
+
+      products = products.concat(oldProducts, newProducts);
+
+      localStorage.setItem("ismProducts", products);
       
+      return "success";
     }
   var quoteBtn = document.querySelector('.btn-add-to-quote'); 
     document.addEventListener("DOMContentLoaded", function () {
