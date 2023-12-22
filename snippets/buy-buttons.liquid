@@ -159,9 +159,6 @@
 
     function setStorage(newProducts){
       let products = [];
-      let oldProducts = getStorage('ismProducts');
-
-      products = products.concat(oldProducts, newProducts);
       
       try {
         localStorage.setItem("ismProducts", JSON.stringify(products));
@@ -196,7 +193,7 @@
           products[productData['id']] = productData;
         }
 
-        console.log(JSON.strinfiy(products));
+        console.log(JSON.stringify(products));
         
         setStorage(products);
 
