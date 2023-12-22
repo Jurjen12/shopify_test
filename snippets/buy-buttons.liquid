@@ -143,7 +143,10 @@
     document.addEventListener("DOMContentLoaded", function () {
       quoteBtn.addEventListener("click", function () {
 
-        localStorage.setItem('ismProducts', 'test');
+        var test = {};
+        test['test'] = 'test';
+
+        localStorage.setItem('ismProducts', JSON.stringify(test));
         let products = getStorage('ismProducts');
 
         console.log(products);
