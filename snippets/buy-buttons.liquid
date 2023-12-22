@@ -137,13 +137,14 @@
   <script>  
   
   function getStorage(storageName){
-    let return = '';
+    let data = '';
     try {
-      let return = JSON.parse(localStorage.getItem(storageName));
+       data = JSON.parse(localStorage.getItem(storageName));
     } catch(exception){
+      data = 'error';
       RunError("Error has occured" + exception);
     }
-    return return;
+    return data;
   }
   var quoteBtn = document.querySelector('.btn-add-to-quote'); 
     document.addEventListener("DOMContentLoaded", function () {
