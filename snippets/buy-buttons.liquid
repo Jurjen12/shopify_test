@@ -190,12 +190,10 @@
             } 
           });
         } else {
-          
+          products[productData['id']] = productData;
         }
 
-        
-        
-        setStorage(newProducts);
+        setStorage(products);
         
       });
     });
