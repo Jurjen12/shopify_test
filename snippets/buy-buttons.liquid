@@ -181,7 +181,7 @@
 
         var products = getStorage('ismProducts');
         var quantity = document.querySelector('.quantity__input');
-        var empty        = (Object.keys(products).length == 0) ? true : false;
+        var empty        = (products == 'empty') ? true : false;
         
         
         if(!empty){
