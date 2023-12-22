@@ -166,7 +166,7 @@
         const urlParams   = new URLSearchParams(queryString);
         let vID          = urlParams.get('variant');
         if(vID == null){
-          vID = "NEIN";
+          vID = {{ product.variants[0].id }};
         } 
 
         console.log(vID);
