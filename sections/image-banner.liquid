@@ -63,13 +63,7 @@
       })
         .then(response => response.text())
         .then(result => {
-          if (result === 'success') {
-            // localStorage.removeItem('ismProducts');
             console.log(result);
-          } else {
-            alert("Something went wrong try again later");
-          }
-          document.querySelector(".btn-quote-submit").classList.remove("disabled");
         });
     })
 
