@@ -174,10 +174,10 @@
     document.addEventListener("DOMContentLoaded", function () {
       quoteBtn.addEventListener("click", function () {
 
-        if (localStorage.getItem("ismProducts") === null) {
-          var empty = {};
-          localStorage.setItem('ismProducts', JSON.stringify(empty));
-        }
+        // if (localStorage.getItem("ismProducts") === null) {
+        //   var empty = {};
+        //   localStorage.setItem('ismProducts', JSON.stringify(empty));
+        // }
 
         var products = getStorage('ismProducts');
         var quantity = document.querySelector('.quantity__input');
@@ -185,10 +185,10 @@
         
         
         if(!empty){
-          products.forEach(function (value){
-            if(productData['variant_id'] == value.variant_id){
-              productData['quantity'] = value.quantity + quantity;
-            } 
+          // products.forEach(function (value){
+          //   if(productData['variant_id'] == value.variant_id){
+          //     productData['quantity'] = value.quantity + quantity;
+          //   } 
           });
         } else {
           products[productData['id']] = productData;
