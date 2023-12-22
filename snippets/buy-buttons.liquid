@@ -174,11 +174,6 @@
     document.addEventListener("DOMContentLoaded", function () {
       quoteBtn.addEventListener("click", function () {
 
-        // if (localStorage.getItem("ismProducts") === null) {
-        //   var empty = {};
-        //   localStorage.setItem('ismProducts', JSON.stringify(empty));
-        // }
-
         var products = getStorage('ismProducts');
         var quantity = document.querySelector('.quantity__input');
         var empty        = (Object.keys(products).length == 0) ? true : false;
