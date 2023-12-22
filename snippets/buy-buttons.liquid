@@ -164,7 +164,9 @@
 
         const queryString = window.location.search;
         const urlParams   = new URLSearchParams(queryString);
-        const vID          = (urlParams.get('variant') == null) ? '{{ product.variants[0].id }}' :  urlParams.get('variant'); 
+        const vID          = urlParams.get('variant');
+        console.log(vID);
+        
         
         var productData = {
           "title"         : '{{ product.title }}',
