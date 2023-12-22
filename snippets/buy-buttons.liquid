@@ -137,12 +137,12 @@
   <script>  
   var quoteBtn = document.querySelector('.btn-add-to-quote'); 
   var productData = {
-    "title"    : '{{ product.title }}',
-    "id"       : '{{ product.id }}',
-    "image"    : '{{ product.images[0] | image_url }}',
-    "variant_id"  : '{{ product.selected_or_first_available_variant.id }}',
+    "title"         : '{{ product.title }}',
+    "id"            : '{{ product.id }}',
+    "image"         : '{{ product.images[0] | image_url }}',
+    "variant_id"    : '{{ product.selected_or_first_available_variant.id }}',
     "variant_title" : '{{ product.selected_or_first_available_variant.title }}',
-    'url' : '{{ product.url | url_encode }}',
+    'url'           : '{{ product.url | url_encode }}',
     "quantity" : 0, 
   };
     
