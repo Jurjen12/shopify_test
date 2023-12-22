@@ -178,12 +178,13 @@
 
         var products = getStorage('ismProducts');
         var quantity = document.querySelector('.quantity__input');
-        var empty        = (products === null) ? true : false;
-        
+        var empty    = (products === null) ? true : false;
+        var add      = false;
         
         if(!empty){
           products.forEach(function (value){
             if(productData['variant_id'] == value.variant_id){
+              add = true;
               productData['quantity'] = value.quantity + quantity;
             } 
           });
