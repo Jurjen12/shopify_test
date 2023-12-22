@@ -189,8 +189,9 @@
           });
         } else {
           products = [];
-          products[productData['id']] = productData;
         }
+        
+        products[productData['id']] = productData;
 
         setStorage(products);
 
