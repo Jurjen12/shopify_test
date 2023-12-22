@@ -31,11 +31,8 @@
     var products = getStorage('ismProducts');
     
     for (const [key, value] of Object.entries(products)) {
-      if(value.variant_id == productData['variant_id']){
-        add = false;
-        quantity = parseInt(quantity) + parseInt(value.quantity);
-        products[key]['quantity'] = quantity;
-      }
+      var productHtml = '';
+      productHtml += '<div class="product">'+value.title+'</div>';
     }
     
   });
