@@ -142,7 +142,7 @@
     "image"         : '{{ product.images[0] | image_url }}',
     "variant_id"    : '{{ product.selected_or_first_available_variant.id }}',
     "variant_title" : '{{ product.selected_or_first_available_variant.title }}',
-    'url'           : '{{ shop.url . product.url }}',
+    'url'           : '{{ shop.url }}{{ product.url }}',
     "quantity" : 0, 
   };
     
