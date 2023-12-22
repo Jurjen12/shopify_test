@@ -157,11 +157,7 @@
     return data;
   }
 
-    function setStorage(newProducts){
-      let products = [];
-      let oldProducts = getStorage('ismProducts');
-
-      products = products.concat(oldProducts, newProducts);
+    function setStorage(products){
       
       try {
         localStorage.setItem("ismProducts", JSON.stringify(products));
@@ -196,7 +192,7 @@
           products[productData['id']] = productData;
         }
 
-        console.log(JSON.strinfiy(products));
+        console.log(products);
         
         setStorage(products);
 
