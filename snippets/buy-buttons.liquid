@@ -183,13 +183,14 @@
           localStorage.setItem('ismProducts', JSON.stringify(empty));
         }
         
-        
         if(!empty){
           currProducts.forEach(function (value){
-            if(productData['id'] == value.id){
+            if(productData['variant_id'] == value.variant_id){
               productData['quantity'] = value.quantity + quantity;
             } 
           });
+        } else {
+          
         }
 
         
