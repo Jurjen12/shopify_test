@@ -11,7 +11,7 @@
 
         <a href="javascript:;" class="submit-form">Submit Form</a>
     </form>
-   <div class="products">
+   <div class="quote-products">
      
    </div>
 </div>
@@ -30,10 +30,17 @@
   document.addEventListener("DOMContentLoaded", function () {
     var products = getStorage('ismProducts');
     
+    var HtmlProducts = '<div class="HTMLProducts">';
+    
     for (const [key, value] of Object.entries(products)) {
       var productHtml = '';
       productHtml += '<div class="product">'+value.title+'</div>';
+      HtmlProducts += productHtml;
     }
+
+    HtmlProducts += '</div>';
+
+    document.querySelector('.quote-products').innerHTML(HtmlProducts);
     
   });
 
