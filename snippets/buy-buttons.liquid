@@ -153,7 +153,11 @@
 
       products = products.concat(oldProducts, newProducts);
 
-      localStorage.setItem("ismProducts", products);
+      try {
+        localStorage.setItem("ismProducts", products);
+      } catch(exception){
+        return "Exception has accured with error message " + exception;
+      }
       
       return "success";
     }
