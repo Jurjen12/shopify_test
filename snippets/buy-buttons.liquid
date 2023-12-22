@@ -191,8 +191,10 @@
         } else {
           products = [];
         }
-        
-        products[productData['id']] = productData;
+
+        if(!add){
+          products[productData['id']] = productData;
+        }
 
         setStorage(products);
 
