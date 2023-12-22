@@ -4,7 +4,7 @@
 
 <div id="offerte-form" class="offerte-form">
     <form id="quote-form" class="quote-form" method="POST" action="">
-      <input type="hidden" name="products" value="">
+      <input type="hidden" name="products" id="quote-products-input">
         <label for="email">E-mail</label>
         <input id="email" name="email" class="email" required/>
         <label for="email">E-mail</label>
@@ -42,6 +42,7 @@
     HtmlProducts += '</div>';
 
     document.querySelector('.quote-products').innerHTML = HtmlProducts;
+    document.querySelector('#quote-products-input').value = "test"
     
   });
 
