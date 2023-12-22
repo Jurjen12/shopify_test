@@ -189,7 +189,7 @@
         
         if(!empty){
           for (const [key, value] of Object.entries(products)) {
-            if(value.id == productData['id']){
+            if(value.variant_id == productData['variant_id']){
               add = false;
               quantity = parseInt(quantity) + parseInt(value.quantity);
               products[key]['quantity'] = quantity;
