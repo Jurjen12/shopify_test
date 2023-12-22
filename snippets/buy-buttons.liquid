@@ -132,13 +132,15 @@
 
   {%- endif -%}
 
-  <a href="javascript:;" class="btn-add-to-quote">Add to quote</a>
+  <a href="javascript:;" class="btn-add-to-quote" data-json="{{ product | json }}">Add to quote</a>
 
-  <script>
-    var json = '{{ product }}';
-    
+  <script>    
+  var quoteBtn = document.querySelector('.btn-add-to-quote'); 
     document.addEventListener("DOMContentLoaded", function () {
-      document.querySelector('.btn-add-to-quote').addEventListener("click", function () {
+      quoteBtn.addEventListener("click", function () {
+
+        var json = quoteBtn.getAttribute('data-json');
+        
 
         console.log(json);
       });
