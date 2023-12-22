@@ -156,7 +156,7 @@
     return data;
   }
 
-    function setStorage(newProducts){
+    function setStorage(newProducts, empty){
       let products = [];
       let oldProducts = getStorage('ismProducts');
 
@@ -192,6 +192,8 @@
         // products['{{ product.id }}'] = productData;
 
         // console.log(products);
+
+        setStorage(newProducts, empty);
         
       });
     });
