@@ -179,12 +179,12 @@
         var products = getStorage('ismProducts');
         var quantity = document.querySelector('.quantity__input');
         var empty    = (products === null) ? true : false;
-        var add      = false;
+        var add      = true;
         
         if(!empty){
           products.forEach(function (value){
             if(productData['variant_id'] == value.variant_id){
-              add = true;
+              add = false;
               productData['quantity'] = value.quantity + quantity;
             } 
           });
@@ -192,7 +192,7 @@
           products = [];
         }
 
-        if(!add){
+        if(add){
           products[productData['id']] = productData;
         }
 
