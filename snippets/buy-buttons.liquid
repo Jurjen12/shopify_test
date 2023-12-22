@@ -139,7 +139,7 @@
     document.addEventListener("DOMContentLoaded", function () {
       quoteBtn.addEventListener("click", function () {
 
-        var json = quoteBtn.getAttribute("data");
+        var json = JSON.parse(quoteBtn.getAttribute("data"));
 
 
         console.log(json);
