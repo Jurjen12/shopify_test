@@ -154,9 +154,6 @@
       data = "Exception has accured with error message " + exception;
     }
 
-    if(data == null){
-      data = "empty";
-    }
     return data;
   }
 
@@ -181,7 +178,7 @@
 
         var products = getStorage('ismProducts');
         var quantity = document.querySelector('.quantity__input');
-        var empty        = (products === 'empty') ? true : false;
+        var empty        = (products === null) ? true : false;
         
         
         if(!empty){
