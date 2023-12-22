@@ -163,13 +163,14 @@
       quoteBtn.addEventListener("click", function () {
 
         const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
+        const urlParams   = new URLSearchParams(queryString);
+        const vID          = (urlParmas.get('variant') == null) ? '{{ product.selected_or_first_available_variant.id }}' :  urlParmas.get('variant'); 
         
         var productData = {
           "title"         : '{{ product.title }}',
           "id"            : '{{ product.id }}',
           "image"         : '{{ product.images[0] | image_url }}',
-          "variant_id"    :  urlParams.get('variant'),
+          "variant_id"    :  vID,
           "variant_title" : '{{ product.selected_or_first_available_variant.title }}',
           'url'           : '{{ shop.url }}{{ product.selected_or_first_available_variant.url }}',
           "quantity" : 0, 
@@ -183,7 +184,7 @@
         
         if(!empty){
           for (const [key, value] of Object.entries(products)) {
-            if(value.variant_id == productData['variant_id']){
+            if(value.id == productData['id']){
               add = false;
               quantity = parseInt(quantity) + parseInt(value.quantity);
               products[key]['quantity'] = quantity;
@@ -195,7 +196,7 @@
 
         if(add){
           productData['quantity'] = parseInt(quantity);
-          products[productData['variant_id']] = productData;
+          products[productData['id']] = productData;
         }
 
         setStorage(products);
