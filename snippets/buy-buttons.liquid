@@ -154,7 +154,9 @@
       data = "Exception has accured with error message " + exception;
     }
 
-    console.log(data);
+    if(data == null){
+      data = "empty";
+    }
     return data;
   }
 
