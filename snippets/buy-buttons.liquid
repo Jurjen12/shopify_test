@@ -178,12 +178,9 @@
         var add      = true;
         
         if(!empty){
-          products.forEach(function (value){
-            if(productData['variant_id'] == value.variant_id){
-              add = false;
-              productData['quantity'] = value.quantity + quantity;
-            } 
-          });
+          for (const [key, value] of Object.entries(products)) {
+            console.log(key, value)
+          }
         } else {
           products = {};
         }
