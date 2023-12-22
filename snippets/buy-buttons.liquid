@@ -163,6 +163,7 @@
 
       products = products.concat(oldProducts, newProducts);
 
+      console.log(JSON.stringify(products));
       try {
         localStorage.setItem("ismProducts", JSON.stringify(products));
       } catch(exception){
@@ -196,7 +197,7 @@
           products[productData['id']] = productData;
         }
 
-        // console.log(products);
+        console.log(products);
         
         setStorage(products);
 
