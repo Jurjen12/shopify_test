@@ -162,8 +162,7 @@
       let oldProducts = getStorage('ismProducts');
 
       products = products.concat(oldProducts, newProducts);
-
-      console.log(JSON.stringify(products));
+      
       try {
         localStorage.setItem("ismProducts", JSON.stringify(products));
       } catch(exception){
