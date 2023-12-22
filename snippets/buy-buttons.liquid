@@ -139,8 +139,8 @@
     document.addEventListener("DOMContentLoaded", function () {
       quoteBtn.addEventListener("click", function () {
 
-        var json = quoteBtn.getAttribute('data-json');
-        
+        var json = "{{ product | json }}";
+
 
         console.log(json);
       });
