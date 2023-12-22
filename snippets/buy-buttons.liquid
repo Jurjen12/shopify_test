@@ -174,7 +174,7 @@
     document.addEventListener("DOMContentLoaded", function () {
       quoteBtn.addEventListener("click", function () {
 
-        var newProducts = [];
+        var products = getStorage('ismProducts');
         var quantity = document.querySelector('.quantity__input');
         
         if (localStorage.getItem("ismProducts") === null) {
@@ -182,8 +182,7 @@
           localStorage.setItem('ismProducts', JSON.stringify(empty));
         }
         
-        var currProducts = getStorage('ismProducts');
-        var empty        = (Object.keys(currProducts).length == 0) ? true : false;
+        var empty        = (Object.keys(products).length == 0) ? true : false;
         var sameProduct  = false;
         
         if(!empty){
@@ -195,7 +194,7 @@
         }
 
         
-
+        
         setStorage(newProducts);
         
       });
