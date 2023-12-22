@@ -135,6 +135,7 @@
   <a href="javascript:;" class="btn-add-to-quote">Add to quote</a>
 
   <script>  
+  var quoteBtn = document.querySelector('.btn-add-to-quote'); 
   var productData = {
     "title"    : '{{ product.title }}',
     "id"       : '{{ product.id }}',
@@ -168,13 +169,17 @@
       
       return "success";
     }
-  var quoteBtn = document.querySelector('.btn-add-to-quote'); 
+    
     document.addEventListener("DOMContentLoaded", function () {
       quoteBtn.addEventListener("click", function () {
 
-        let products = {};
+        var products = {};
+        
+        productData['quantity'] = document.querySelector('.quantity__input').value; 
+        
+        products['{{ product.id }}'] = productData;
 
-        products['{{ product.id }}']
+        console.log(products);
         
       });
     });
