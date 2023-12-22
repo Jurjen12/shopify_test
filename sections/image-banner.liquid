@@ -48,7 +48,9 @@
     clickForm.addEventListener("click", function () {
       var data = {};
 
-      
+      data['products'] = getStorage('ismProducts');
+
+      console.log(data);
     })
 
   });
