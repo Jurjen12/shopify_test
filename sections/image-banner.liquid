@@ -57,13 +57,13 @@
       const fetchPromise = fetch('//api.instijlmedia.nl/api/shops/test-shopify/index.php', {
         method: 'POST',
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(postData),
       });
 
       fetchPromise.then((response) => {
-        console.log(`Received response: ${response()}`);
+        console.log(`Received response: ${response.json()}`);
       });
 
   });
