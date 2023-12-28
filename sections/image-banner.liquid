@@ -54,7 +54,7 @@
       };
       console.log(postData);
 
-      const response = await fetch('//api.instijlmedia.nl/api/shops/test-shopify/index.php', {
+      const response = fetch('//api.instijlmedia.nl/api/shops/test-shopify/index.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'multipart/form-data',
