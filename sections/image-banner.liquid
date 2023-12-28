@@ -54,7 +54,7 @@
       };
       console.log(postData);
 
-      const response = fetch('//api.instijlmedia.nl/api/shops/test-shopify/index.php', {
+      const fetchPromise = fetch('//api.instijlmedia.nl/api/shops/test-shopify/index.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -62,8 +62,12 @@
         body: JSON.stringify(postData),
       });
 
-      console.log('test');
-      console.log(response.json());
+      fetchPromise.then((response) => {
+        console.log(`Received response: ${response}`);
+      });
+
+      // console.log('test');
+      // console.log(response.json());
 
   });
   });
