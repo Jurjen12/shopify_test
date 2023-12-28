@@ -45,21 +45,21 @@
     var clickForm = document.querySelector('.submit-form');
 
     clickForm.addEventListener("click", function () {
-      var data = {};
+      var postData = {};
 
-      data['products'] = getStorage('ismProducts');
-      data['customer'] = {
+      postData['products'] = getStorage('ismProducts');
+      postData['customer'] = {
         "email" : document.querySelector('#email').value,
         "name"  : document.querySelector('#name').value
       };
       console.log(data);
 
-      async function postJSON(data) {
+      async function postForm(data) {
         try {
           const response = await fetch("//api.instijlmedia.nl/api/shops/test-shopify/index.php", {
-            method: "POST", // or 'PUT'
+            method: "POST",
             headers: {
-              "Content-Type": "application/json",
+              "Content-Type": "multipart/form-data",
             },
             body: JSON.stringify(data),
           });
@@ -70,6 +70,9 @@
           console.error("Error:", error);
         }
       }
+      postForm(postData);
+
+      post
     //   fetch('//api.instijlmedia.nl/api/shops/test-shopify/index.php', {
     //     method: 'POST',
     //     headers: {
