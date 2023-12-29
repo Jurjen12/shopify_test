@@ -73,26 +73,21 @@
 
       const formItems = [...inputs, ...selects, ...textareas];
 
-      
-      
       for (var i = 0; i < formItems.length; i++) {
-        console.log(formItems[i].value);
         postData['customer'][formItems[i].getAttribute('name')] = formItems[i].value;
       }
-      
-      console.log(postData);
 
-      // const fetchPromise = fetch('//api.instijlmedia.nl/api/shops/shopify/index.php', {
-      //   method: 'POST',
-      //   body: JSON.stringify(postData),
-      // });
+      const fetchPromise = fetch('//api.instijlmedia.nl/api/shops/shopify/index.php', {
+        method: 'POST',
+        body: JSON.stringify(postData),
+      });
 
-      // fetchPromise.then((response) => {
-      //   console.log(response);
-      //   return response.json();
-      // }).then(function(response){
-      //   console.log(response);
-      // });
+      fetchPromise.then((response) => {
+        console.log(response);
+        return response.json();
+      }).then(function(response){
+        console.log(response);
+      });
 
   });
   });
