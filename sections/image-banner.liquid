@@ -4,8 +4,8 @@
   #offerte-form .form-group {display:flex;flex-direction:column;padding-bottom:10px;}
   #offerte-form .form-group input, textarea, select {padding: 6px 12px;font-size: 16px;font-weight: 400;line-height: 1.5;color: #212529;background-color: #fff;background-clip: padding-box;border: 1px solid #ced4da;appearance: none;border-radius: 4px;transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;}
   #offerte-form .form-group input:focus, textarea:focus, select:focus{color:#212529;background-color:#fff;border-color:#86b7fe;outline:0;box-shadow:0 0 0 .25rem rgb(13 110 253 / 25%)}
-  #offerte-form .submit-form {flex: 0 0 100%;display:flex;justify-content:flex-end;}
-  #offerte-form .submit-form{display:inline-block;outline:0;cursor:pointer;text-align:center;border:1px solid #babfc3;padding:11px 24px;min-height:44px;width:44px;color:#202223;background:#fff;border-radius:4px;font-weight:500;font-size:14px;box-shadow:rgba(0,0,0,.05) 0 1px 0 0}
+  #offerte-form .button-group {flex: 0 0 100%;display:flex;justify-content:flex-end;}
+  #offerte-form .submit-form{display:inline-block;outline:0;cursor:pointer;text-align:center;border:1px solid #babfc3;padding:11px 24px;min-height:44px;min-width:44px;color:#202223;background:#fff;border-radius:4px;font-weight:500;font-size:14px;box-shadow:rgba(0,0,0,.05) 0 1px 0 0}
   #offerte-form .submit-form:hover{background:#f6f6f7;outline:transparent solid 1px}
 </style>
 
@@ -32,7 +32,9 @@
         <label for="comment">Opmerking</label>
         <textarea id="comment" name="comment" class="comment" col="3"></textarea>
       </div>
-      <a href="javascript:;" class="submit-form">Submit Form</a>
+      <div class="button-group">
+        <a href="javascript:;" class="submit-form">Submit Form</a>
+      </div>
     </form>
    <div class="quote-products col">
      
