@@ -67,11 +67,13 @@
       postData['products'] = getStorage('ismProducts');
       postData['customer'] = {};
 
-      const inputs    = document.querySelectorAll("#offerte-form input");
-      const selects   = document.querySelectorAll("#offerte-form select");
-      const textareas = document.querySelectorAll("#offerte-form textarea");
+      let inputs    = document.querySelectorAll("#offerte-form input");
+      let selects   = document.querySelectorAll("#offerte-form select");
+      let textareas = document.querySelectorAll("#offerte-form textarea");
 
-      const allFormData = inputs.concat(selects, textareas);
+      const mergedData = [...inputs, ...selects, ...textareas];
+
+      console.log(mergedData);
 
       console.log(allFormData);
       
