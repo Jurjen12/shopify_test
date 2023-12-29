@@ -74,37 +74,41 @@
     var products = getStorage('ismProducts');
     console.log(products);
     var HtmlProducts = '<div class="HTMLProducts">';
-  
-    // Loop through each product and generate HTML
-    for (const [key, value] of Object.entries(products)) {
-      var productHtml = generateProductHtml(value);
-      HtmlProducts += productHtml;
-    }
-  
-    HtmlProducts += '</div>';
-    // Display the generated HTML in the specified element
-    document.querySelector('.quote-products').innerHTML = HtmlProducts;
-  
-    // Event listener for the form submit button
-    var clickForm = document.querySelector('.submit-form');
-    clickForm.addEventListener("click", function () {
-      // Prepare data for POST request
-      var postData = {
-        products: getStorage('ismProducts'),
-        customer: {},
-      };
-  
-      // Get form items (inputs, selects, textareas)
-      const formItems = getFormItems();
-  
-      // Populate customer data from form items
-      for (var i = 0; i < formItems.length; i++) {
-        postData.customer[formItems[i].name] = formItems[i].value;
+
+    if(products == null){
+      document.querySelector('.quote-products').innerHTML = "Geen producten gevonden";
+    } else {
+      // Loop through each product and generate HTML
+      for (const [key, value] of Object.entries(products)) {
+        var productHtml = generateProductHtml(value);
+        HtmlProducts += productHtml;
       }
-  
-      // Send the data to the server
-      sendFormData(postData);
-    });
+    
+      HtmlProducts += '</div>';
+      // Display the generated HTML in the specified element
+      document.querySelector('.quote-products').innerHTML = HtmlProducts;
+    
+      // Event listener for the form submit button
+      var clickForm = document.querySelector('.submit-form');
+      clickForm.addEventListener("click", function () {
+        // Prepare data for POST request
+        var postData = {
+          products: getStorage('ismProducts'),
+          customer: {},
+        };
+    
+        // Get form items (inputs, selects, textareas)
+        const formItems = getFormItems();
+    
+        // Populate customer data from form items
+        for (var i = 0; i < formItems.length; i++) {
+          postData.customer[formItems[i].name] = formItems[i].value;
+        }
+    
+        // Send the data to the server
+        sendFormData(postData);
+      });
+    }
   });
   
   // Function to generate HTML for a product
