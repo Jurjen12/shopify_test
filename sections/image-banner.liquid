@@ -71,14 +71,11 @@
       let selects   = document.querySelectorAll("#offerte-form select");
       let textareas = document.querySelectorAll("#offerte-form textarea");
 
-      const mergedData = [...inputs, ...selects, ...textareas];
+      const formItems = [...inputs, ...selects, ...textareas];
 
-      console.log(mergedData);
-
-      console.log(allFormData);
       
-      for (var i = 0; i < inputs.length; i++) {
-        console.log(inputs[i].value);
+      for (var i = 0; i < inputs.formItems; i++) {
+        console.log(formItems[i].value);
       }
       console.log(postData);
 
