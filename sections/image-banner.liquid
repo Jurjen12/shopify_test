@@ -65,10 +65,7 @@
       var postData = {};
 
       postData['products'] = getStorage('ismProducts');
-      postData['customer'] = {
-        "email" : document.querySelector('#email').value,
-        "name"  : document.querySelector('#name').value
-      };
+      postData['customer'] = {};
       console.log(postData);
 
       const fetchPromise = fetch('//api.instijlmedia.nl/api/shops/shopify/index.php', {
