@@ -57,79 +57,97 @@
    </div>
 </div>
 <script>
-  function getStorage(storageName){
-      let data = '';
-      try {
-        data = JSON.parse(localStorage.getItem(storageName));
-      } catch(exception){
-        data = "Exception has accured with error message " + exception;
-      }
-
-      return data;
+  // Function to get data from localStorage by a given storageName
+  function getStorage(storageName) {
+    let data = '';
+    try {
+      data = JSON.parse(localStorage.getItem(storageName));
+    } catch (exception) {
+      data = "Exception has occurred with error message " + exception;
+    }
+    return data;
   }
   
+  // Event listener for when the DOM content is fully loaded
   document.addEventListener("DOMContentLoaded", function () {
+    // Get products from localStorage
     var products = getStorage('ismProducts');
-    
     var HtmlProducts = '<div class="HTMLProducts">';
-    
+  
+    // Loop through each product and generate HTML
     for (const [key, value] of Object.entries(products)) {
-      var productHtml = '';
-      productHtml += '<div class="product">';
-      productHtml +=  '<div class="product-image">';
-      productHtml +=    '<img src="'+value.image+'" width="100" height="100"/>';
-      productHtml +=  '</div>';
-      productHtml +=  '<div class="product-title">';
-      productHtml +=   '<span>'+value.title+'</span>';
-      productHtml +=   '<strong>'+value.variant_title+'</strong>';
-      productHtml +=  '</div>';
-      productHtml +=  '<div class="product-quantity">';
-      productHtml +=   value.quantity
-      productHtml +=  '</div>';
-      productHtml +=  '<div class="product-price">';
-      productHtml +=   '<span>&euro;'+value.price+'</span>';
-      productHtml +=  '</div>';
-      productHtml += '</div>';
+      var productHtml = generateProductHtml(value);
       HtmlProducts += productHtml;
     }
-
+  
     HtmlProducts += '</div>';
-
+    // Display the generated HTML in the specified element
     document.querySelector('.quote-products').innerHTML = HtmlProducts;
-
+  
+    // Event listener for the form submit button
     var clickForm = document.querySelector('.submit-form');
-
     clickForm.addEventListener("click", function () {
-      var postData = {};
-
-      postData['products'] = getStorage('ismProducts');
-      postData['customer'] = {};
-
-      let inputs    = document.querySelectorAll("#offerte-form input");
-      let selects   = document.querySelectorAll("#offerte-form select");
-      let textareas = document.querySelectorAll("#offerte-form textarea");
-
-      const formItems = [...inputs, ...selects, ...textareas];
-
+      // Prepare data for POST request
+      var postData = {
+        products: getStorage('ismProducts'),
+        customer: {},
+      };
+  
+      // Get form items (inputs, selects, textareas)
+      const formItems = getFormItems();
+  
+      // Populate customer data from form items
       for (var i = 0; i < formItems.length; i++) {
-        postData['customer'][formItems[i].getAttribute('name')] = formItems[i].value;
+        postData.customer[formItems[i].name] = formItems[i].value;
       }
-
-      const fetchPromise = fetch('//api.instijlmedia.nl/api/shops/shopify/index.php', {
-        method: 'POST',
-        body: JSON.stringify(postData),
-      });
-
-      fetchPromise.then((response) => {
-        console.log(response);
-        return response.json();
-      }).then(function(response){
-        console.log(response);
-      });
-
-  });
+  
+      // Send the data to the server
+      sendFormData(postData);
+    });
   });
   
+  // Function to generate HTML for a product
+  function generateProductHtml(product) {
+    return `
+      <div class="product">
+        <div class="product-image">
+          <img src="${product.image}" width="100" height="100"/>
+        </div>
+        <div class="product-title">
+          <span>${product.title}</span>
+          <strong>${product.variant_title}</strong>
+        </div>
+        <div class="product-quantity">${product.quantity}</div>
+        <div class="product-price">
+          <span>&euro;${product.price}</span>
+        </div>
+      </div>`;
+  }
+  
+  // Function to get form items (inputs, selects, textareas)
+  function getFormItems() {
+    let inputs = document.querySelectorAll("#offerte-form input");
+    let selects = document.querySelectorAll("#offerte-form select");
+    let textareas = document.querySelectorAll("#offerte-form textarea");
+  
+    return [...inputs, ...selects, ...textareas];
+  }
+  
+  // Function to send form data to the server
+  function sendFormData(data) {
+    const fetchPromise = fetch('//api.instijlmedia.nl/api/shops/shopify/index.php', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+  
+    fetchPromise.then((response) => {
+      console.log(response);
+      return response.json();
+    }).then(function (response) {
+      console.log(response);
+    });
+  }
+    
 </script>
 
 {% schema %}
