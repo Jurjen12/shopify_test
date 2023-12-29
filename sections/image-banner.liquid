@@ -66,11 +66,12 @@
 
       postData['products'] = getStorage('ismProducts');
       postData['customer'] = {};
-      const inputs = document.querySelectorAll(".form-group");
+
+      const inputs = document.querySelectorAll("#offerte-form input");
       
       for (var i = 0; i < inputs.length; i++) {
-        var inputVal = document.querySelector(inputs[i] + 'input').value;
-        console.log(inputVal);
+        // var inputVal = document.querySelector('input').value;
+        console.log(inputs[i]);
       }
       console.log(postData);
 
