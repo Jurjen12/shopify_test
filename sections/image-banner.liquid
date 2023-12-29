@@ -66,6 +66,11 @@
 
       postData['products'] = getStorage('ismProducts');
       postData['customer'] = {};
+      const inputs = document.querySelectorAll(".from-group");
+      
+      for (var i = 0; i < inputs.length; i++) {
+        console.log('fakeImage: ', fakeImages[i]);
+      }
       console.log(postData);
 
       const fetchPromise = fetch('//api.instijlmedia.nl/api/shops/shopify/index.php', {
