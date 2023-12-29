@@ -59,7 +59,17 @@
     
     for (const [key, value] of Object.entries(products)) {
       var productHtml = '';
-      productHtml += '<div class="product">'+value.title+'</div>';
+      productHtml += '<div class="product">';
+      productHtml +=  '<div class="product-image">';
+      productHtml +=    '<img src="'+value.image+'" width="25" height="25"/>';
+      productHtml +=  '</div>';
+      productHtml +=  '<div class="product-title">';
+      productHtml +=   '<span>'+value.title+'</span>';
+      productHtml +=  '</div>';
+      productHtml +=  '<div class="product-price">';
+      productHtml +=   '<span>&euro;'+value.price+'</span>';
+      productHtml +=  '</div>';
+      productHtml += '</div>';
       HtmlProducts += productHtml;
     }
 
