@@ -68,9 +68,9 @@
       postData['customer'] = {};
 
       const inputs = document.querySelectorAll("#offerte-form input");
-      
+      const selects = document.querySelectorAll("#offerte-form ");
+      const textareas = document.querySelectorAll("#offerte-form textarea");
       for (var i = 0; i < inputs.length; i++) {
-        // var inputVal = document.querySelector('input').value;
         console.log(inputs[i].value);
       }
       console.log(postData);
