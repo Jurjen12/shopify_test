@@ -1,11 +1,11 @@
 <style>
   #offerte-form {display:flex;flex-wrap;}
-  #offerte-form .quote-form {flex:0 0 50%;padding-right:20px;padding-left:20px;max-width:50%}
-  #offerte-form .quote-products {flex:0 0 50%;padding-right:20px;padding-left:20px;max-width:50%;}
+  #offerte-form .col {flex:0 0 50%;padding-right:20px;padding-left:20px;max-width:50%}
 </style>
 
+
 <div id="offerte-form" class="offerte-form">
-    <form id="quote-form" class="quote-form" method="POST" action="" enctype="multipart/form-data">
+    <form id="quote-form" class="quote-form col" method="POST" action="" enctype="multipart/form-data">
       <div class="form-group">
         <label for="email">E-mail</label>
         <input id="email" name="email" class="email" type="email" required/>
@@ -30,7 +30,7 @@
 
         <a href="javascript:;" class="submit-form">Submit Form</a>
     </form>
-   <div class="quote-products">
+   <div class="quote-products col">
      
    </div>
 </div>
