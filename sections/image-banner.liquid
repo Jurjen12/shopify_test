@@ -73,7 +73,9 @@
       productHtml +=   '<span>'+value.title+'</span>';
       productHtml +=   '<strong>'+value.variant_title+'</strong>';
       productHtml +=  '</div>';
-    
+      productHtml +=  '<div class="product-quantity">';
+      productHtml +=   value.quantity
+      productHtml +=  '</div>';
       productHtml +=  '<div class="product-price">';
       productHtml +=   '<span>&euro;'+value.price+'</span>';
       productHtml +=  '</div>';
