@@ -1,11 +1,11 @@
 <style>
-  #offerte-form {display:flex;flex-wrap;}
+  .flex-wrap {display:flex;flex-wrap:wrap;}
   #offerte-form .col {flex:0 0 50%;padding-right:20px;padding-left:20px;max-width:50%}
 </style>
 
 
-<div id="offerte-form" class="offerte-form">
-    <form id="quote-form" class="quote-form col" method="POST" action="" enctype="multipart/form-data">
+<div id="offerte-form" class="offerte-form flex-wrap">
+    <form id="quote-form" class="quote-form col flex-wrap" method="POST" action="" enctype="multipart/form-data">
       <div class="form-group">
         <label for="email">E-mail</label>
         <input id="email" name="email" class="email" type="email" required/>
