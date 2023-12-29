@@ -150,8 +150,8 @@
       return response.json();
     }).then(function (response) {
       if(response['status'] == 'ok'){
-        window.location.href = response['response'];
         localStorage.removeItem('ismProducts');
+        window.location.href = response['response'];
       } else {
         alert("Please contact adminstor. Error message" + response['reponse']);
       }
