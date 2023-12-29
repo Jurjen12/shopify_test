@@ -69,8 +69,8 @@
       const inputs = document.querySelectorAll(".form-group");
       
       for (var i = 0; i < inputs.length; i++) {
-        // var inputVal = document.querySelector(inputs[i]);
-        console.log(inputs[i]);
+        var inputVal = document.querySelector(inputs[i] + 'input').value;
+        console.log(inputVal);
       }
       console.log(postData);
 
