@@ -146,6 +146,7 @@
     }).then(function (response) {
       if(response['status'] == 'ok'){
         window.location.href = response['response'];
+        localStorage.removeItem('ismProducts');
       } else {
         alert("Please contact adminstor. Error message" + response['reponse']);
       }
