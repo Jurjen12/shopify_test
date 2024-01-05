@@ -41,7 +41,8 @@
         "b12fca51-0e36-4b6e-8454-9024b4461c4e": {
           "type": "shopify:\/\/apps\/appjj\/blocks\/star_rating\/a191b9cd-5841-476f-94e0-ec1e8f9d8b50",
           "settings": {
-            "colour": "#ff0000"
+            "title_form": "NAW gegevensadad",
+            "title_products": "Producten"
           }
         }
       },
