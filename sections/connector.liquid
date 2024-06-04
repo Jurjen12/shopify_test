@@ -1,6 +1,50 @@
+test
 {% schema %}
-  {
-    "name": "productsection",
-    "settings": []
+{
+  "name": "Slideshow",
+  "tag": "section",
+  "class": "slideshow",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Slideshow"
+    }
+  ],
+  "blocks": [
+     {
+       "name": "Slide",
+       "type": "slide",
+       "settings": [
+         {
+           "type": "image_picker",
+           "id": "image",
+           "label": "Image"
+         }
+       ]
+     }
+   ],
+   "default": {
+    "settings": {
+      "title": "Slideshow"
+    },
+    "blocks": [
+      {
+        "type": "slide"
+      },
+      {
+        "type": "slide"
+      }
+    ]
+  },
+  "locales": {
+    "en": {
+      "title": "Slideshow"
+    },
+    "fr": {
+      "title": "Diaporama"
+    }
   }
+}
 {% endschema %}
