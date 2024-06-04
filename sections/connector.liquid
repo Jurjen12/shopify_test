@@ -1,7 +1,11 @@
-{{ section.settings.custom_liquid }}
-{% for product in section.settings.custom_liquid %}
-   {{ product.title }}
-{% endfor %}
+<div class="product-connector-box">
+  {% for product in section.settings.products %}
+    <div class="product-connector">
+      {{ product.title }}
+    </div>
+  {% endfor %}
+
+</div>
 
 {% schema %}
 
@@ -15,7 +19,7 @@
 
       "type": "product_list",
 
-      "id": "custom_liquid",
+      "id": "products",
 
       "label": "Connector",
 
