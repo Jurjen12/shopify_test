@@ -103,7 +103,7 @@
     "connector_QwEUYR": {
       "type": "connector",
       "settings": {
-        "custom_liquid": "{{ product.metafields.custom.related.value }}"
+        "products": "{{ product.metafields.custom.related.value }}"
       }
     }
   },
