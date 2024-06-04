@@ -1,50 +1,33 @@
-test
+{{ section.settings.custom_liquid }}
+
 {% schema %}
+
 {
-  "name": "connector",
-  "tag": "section",
-  "class": "coonnector",
-  "max_blocks": 5,
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "connector"
-    }
-  ],
-  "blocks": [
-     {
-       "name": "Slide",
-       "type": "slide",
-       "settings": [
-         {
-           "type": "image_picker",
-           "id": "image",
-           "label": "Image"
-         }
-       ]
-     }
-   ],
-   "default": {
-    "settings": {
-      "title": "test"
-    },
-    "blocks": [
-      {
-        "type": "slide"
-      },
-      {
-        "type": "slide"
-      }
-    ]
-  },
-  "locales": {
-    "en": {
-      "title": "Connector"
-    },
-    "fr": {
-      "title": "Connector"
-    }
-  }
+
+   "name": "Custom Liquid JJ",
+
+   "settings": [
+
+   {
+
+      "type": "liquid",
+
+      "id": "custom_liquid",
+
+      "label": "Custom Liquid JJ",
+
+      "info": "Add app snippets or other liquid code to create advanced customizations."
+
+   }],
+
+   "presets": [
+
+   {
+
+      "name": "Custom Liquid JJ"
+
+   }]
+
 }
+
 {% endschema %}
