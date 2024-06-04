@@ -99,11 +99,18 @@
         "padding_top": 40,
         "padding_bottom": 52
       }
+    },
+    "connector_QwEUYR": {
+      "type": "connector",
+      "settings": {
+        "custom_liquid": ""
+      }
     }
   },
   "order": [
     "main",
     "related-products",
-    "custom_liquid_EXtLfR"
+    "custom_liquid_EXtLfR",
+    "connector_QwEUYR"
   ]
 }
