@@ -1,4 +1,6 @@
-{{ section.settings.custom_liquid }}
+{% for product in settings.custom_liquid %}
+   {{ product.title }}
+{% endfor %}
 
 {% schema %}
 
