@@ -525,7 +525,8 @@
   -%}
 
   <script>
-        var newUrl = queryString.split("/products")[0] + queryString.split("/products")[1];
+    var queryString = window.location.href; 
+    var newUrl = queryString.split("/products")[0] + queryString.split("/products")[1];
     window.history.pushState({}, '', newUrl + ".html");
   </script>
   <script type="application/ld+json">
